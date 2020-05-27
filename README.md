@@ -17,10 +17,10 @@
   <a href="#features">Features</a> •
   <a href="#requirements">Requirements</a> •
   <a href="#build-process">Build</a> •
-  <a href="#running-project">Run</a>
-  <a href="#credits">Credits</a>
-  <a href="#author">Author</a>
-  <a href="#contributing">Contributing</a>•
+  <a href="#running-project">Run</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#author">Author</a> •
+  <a href="#contributing">Contributing</a> •
   <a href="#license">License</a>
 </p>
 
@@ -73,7 +73,7 @@ $npm start
 ## Credits
 Project was possible with following Frameworks
 - ***[Electron](https://www.electronjs.org/)*** 
-- ***[Angular](htpps://angular.io)***
+- ***[Angular](https://angular.io)***
 - ***[Express](https://expressjs.com/)***
 - ***[Mongoose](https://mongoosejs.com/)***
 - ***[ws-wrapper](https://github.com/bminer/ws-wrapper)***
