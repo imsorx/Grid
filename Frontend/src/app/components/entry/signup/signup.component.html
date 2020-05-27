@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="errormsg" *ngIf="error">{{error}}</div>
+  <form #signupform="ngForm" (ngSubmit)='auth(signupform)'>
+    <div class="inputgrp">
+      <i class="uil uil-user"></i>
+      <input type="text" ngModel name="name"  placeholder="Full Name" required />
+    </div>
+    <div class="inputgrp">
+      <i class="uil uil-envelope"></i>
+      <input type="email" ngModel name="mail" placeholder="Mail" email required />
+    </div>
+    <div class="inputgrp">
+      <i class="uil uil-lock"></i>
+      <input type="password" ngModel name="password" placeholder="Password" required/>
+    </div>
+    <button type="submit">Sign up<i class="uil uil-arrow-right"></i></button>
+  </form>
+</div>
+<div class="reginfo">
+  <p>Already have an account?</p>
+  <p class="regbtn" [routerLink]="['/entry', 'login']">Login here!</p>
+</div>

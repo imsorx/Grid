@@ -1,0 +1,137 @@
+@import 'src/assets/colors.scss';
+
+.container {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 32px);
+  background: $bg;
+  align-items: center;
+  z-index: 0;
+}
+.route{
+  position: relative;
+  height: calc(100% - 150px);
+  width: 100%;
+  user-select: none;
+}
+.cover {
+  text-align: left;
+  width: 100%;
+  height: 150px;
+  color: $primary;
+  border-radius: 0px 0px 50% 0px;
+  background-image: linear-gradient(to right, rgba(176, 48, 176,0.9) , rgba(32, 32, 96,0.9)), url("../../../assets/login_bg.jpg");
+  background-position: center;
+  animation: headeranim 15s infinite alternate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .intro {
+    -webkit-user-select: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    overflow: hidden;
+    width: 127.953px;
+    white-space: nowrap;
+    border-right: 2px solid rgba($color: #fff, $alpha: 0.87);
+    animation: animIntro 2s steps(8,end),animBar 0.8s step-end infinite ;
+  }
+  .sub{
+    -webkit-user-select: none;
+    font-weight: 400;
+    font-size: 1rem;
+    animation: animIntro2 3s ease-in;
+  }
+}
+
+.wave-container{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+  .footer {
+    width: 100%;
+    height: 100px;
+    background-image: url("../../../assets/wave.svg");
+    background-size: 200%;
+    background-repeat: no-repeat;
+    background-position-y: 5px;
+    backface-visibility: hidden;
+    animation: anim 10s infinite linear alternate;
+    z-index: -1;
+    &::after{
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url("../../../assets/wave.svg");
+      background-repeat: no-repeat;
+      background-size: 150%;
+      background-position-y: 3px;
+      background-position-x: 15px;
+      opacity: 0.2;
+      animation: anim 15s infinite linear alternate;
+    }
+  }
+}
+.footer-active{
+  z-index: 1;
+  animation: anim 3s infinite linear alternate;
+}
+
+
+@keyframes anim {
+  0% {
+    background-position-x: 0px;
+  }
+  100%{
+    background-position-x: 100%;
+  }
+}
+@keyframes headeranim {
+  0%{
+    background-size: 100%;
+  }
+  100%{
+    background-size: 155%;
+  }
+}
+@keyframes animIntro{
+  0%{
+
+    width: 0; 
+  }
+  100%{
+    width: 127.953px;
+  }
+}
+@keyframes animIntro2{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+
+  }
+}
+@keyframes animBar{
+  0%{
+    border-color: rgba($color: #ffffff, $alpha: 0);
+  }
+  50%{
+    border-color: rgba($color: #ffffff, $alpha: 0.8);
+  }
+  100%{
+    border-color: rgba($color: #ffffff, $alpha: 0);
+  }
+}

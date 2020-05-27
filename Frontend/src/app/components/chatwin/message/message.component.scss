@@ -1,0 +1,41 @@
+@import 'src/assets/colors.scss';
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  .msg {
+    max-width: 80%;
+    align-self: flex-start;
+    border-radius: 0px 25px 25px 30px;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 16px;
+    line-height: 1.5;
+    color: $secondary80;
+    background: $bg;
+    box-shadow: 0px 2px 10px $asscent20;
+    &::selection {
+      color: #fff;
+      background: $asscent;
+    }
+  }
+
+  .stamp {
+    user-select: none;
+    padding: 2px 8px;
+    font-size: 10px;
+    color: $dark50;
+  }
+
+  .rightm {
+    align-self: flex-end;
+    border-radius: 25px 0px 30px 25px;
+    text-align: right;
+  }
+
+  .rights {
+    align-self: flex-end;
+  }
+}

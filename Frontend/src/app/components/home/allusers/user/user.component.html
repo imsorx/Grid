@@ -1,0 +1,10 @@
+<div (click)="userclick()" class="container">
+        <img [src]="userobj.image">
+        <p>
+          <strong>{{userobj.name}}</strong>
+          <br>
+          <span>{{userobj.mail}}</span>
+        </p>
+        <div class="status" [ngClass]="{'away': userobj.status==0}"></div>
+        <div class="select"><i class='uil uil-envelope-add'></i><i class='uil uil-user-plus'></i></div>
+</div>

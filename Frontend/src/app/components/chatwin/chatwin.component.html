@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="header">
+    <img src="assets/1.jpg" alt="" srcset="">
+    <div class="userdetails">
+      <p>Vishal Singh</p>
+      <span>vishalsingh@gmail.com</span>
+    </div>
+  </div>
+  <div @flyin  id="msgbox" class="msgbox">
+    <div class="wrapper" *ngFor="let msg of messages">
+      <app-message [msg]='msg'></app-message>
+    </div>
+  </div>
+  <div class="msginput">
+    <input (keyup.enter)="onEnter(msg.value); msg.value=''" type="text" name="msg" #msg placeholder="Type message here..."/>
+    <i class='uil uil-file-share-alt'></i>
+    <i class='uil uil-location-arrow'></i>
+  </div>
+</div>
+

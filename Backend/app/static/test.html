@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/test.css" />
+  <title>Test API</title>
+</head>
+
+<body>
+  <section>
+    <div class="title">HTTP</div>
+    <form action="submit" method="POST" id="httpForm">
+      <div class="input-group">
+        <select id="methods" required>
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+        </select>
+        <label for="toggle">Token</label>
+        <input type="checkbox" id="toggle" />
+      </div>
+      <div class="input-group">
+        <input type="text" id="url1" required />
+        <label for="url1">Address</label>
+      </div>
+      <div class="input-group">
+        <input type="text" id="body" disabled required />
+        <label for="body">Body</label>
+      </div>
+      <div class="input-group">
+        <input type="text" id="token" disabled required />
+        <label for="token">Token</label>
+      </div>
+      <div class="input-group">
+        <input type="submit" value="Execute" />
+      </div>
+    </form>
+  </section>
+
+  <section>
+    <div class="title">Websocket</div>
+    <form action="submit" id="connectForm">
+      <div class="input-group">
+        <input id="url2" required />
+        <label for="url2">Address</label>
+      </div>
+      <div class="input-group">
+        <input type="submit" id="connect" value="Connect" />
+      </div>
+    </form>
+
+    <form action="submit" method="POST" id="messageForm">
+      <div class="input-group">
+        <input id="channel" required />
+        <label for="channel">Channel</label>
+      </div>
+      <div class="input-group">
+        <input id="event" required />
+        <label for="event">Event</label>
+      </div>
+      <div class="input-group">
+        <input id="message" required />
+        <label for="message">Message</label>
+      </div>
+      <div class="input-group">
+        <input type="submit" value="Send" />
+      </div>
+    </form>
+  </section>
+
+  <section>
+    <div class="title">Output</div>
+    <form action="">
+      <div class="input-group">
+        <textarea id="logs" disabled
+          placeholder="Waiting for query execution. Respoonse will be shown here :)"></textarea>
+      </div>
+    </form>
+  </section>
+
+  <script src="./js/bundle.js"></script>
+</body>
+
+</html>

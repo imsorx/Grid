@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="title">
+        <img src="assets/logo.png">
+        <p>Grid Messenger</p>
+    </div>
+    <div class="controls">
+        <div *ngIf="getroute()" class="btn log " (click)="signout()"><i class='uil uil-sign-out-alt'></i></div>
+        <div class="btn min" (click)="minwindow()" ><i class='uil uil-minus'></i></div>
+        <div class="btn close" (click)="closewindow()"><i class='uil uil-times'></i></div>
+    </div>
+</div>

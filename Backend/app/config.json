@@ -1,0 +1,20 @@
+{
+    "app" : {
+        "name":"Grid_api",
+        "port":4040
+    },
+    "db":{
+        "host":"localhost",
+        "port":27017,
+        "name":"grid",
+        "usename":null,
+        "password":null
+    },
+    "storage":{
+        "basePath":"/uploads",
+        "avatarPath":"/avatar",
+        "filesPath":"/"
+    },
+    "JWT_KEY":"secret",
+    "salt":10
+}

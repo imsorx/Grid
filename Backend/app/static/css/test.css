@@ -1,0 +1,186 @@
+@font-face {
+  font-family: "Encode";
+  src: url(./../fonts/Encode.ttf) format("truetype");
+}
+
+:root {
+  --bg-light: #f5f5f5;
+  --bg-dark: rgb(68, 93, 121);
+  --asscent: #fc5185;
+  --asscent2: #3fc1c9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Encode", sans-serif;
+  font-size: 15px;
+  color: var(--bg-dark);
+  transition: all 0.2s;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: center;
+  background: url('./../images/bg_purple.png');
+  background-size: cover;
+  background-repeat: repeat-x;
+  background-position: left top;
+  position: relative;
+}
+
+.main-title {
+  flex: 100%;
+  font-size: 2em;
+  text-align: center;
+  opacity: 0.6;
+  margin: 10px auto;
+}
+
+section {
+  margin: 50px 20px;
+  background: #ffffff;
+  box-shadow: 10px 18px 12px rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
+  position: relative;
+  z-index: 0;
+}
+
+section .title {
+  position: absolute;
+  padding: 10px 20px;
+  width: 104%;
+  height: calc(100% + 1.5em);
+  top: -1.5em;
+  left: -2%;
+  color: var(--bg-light);
+  background: var(--asscent);
+  border-radius: 5px;
+  z-index: -10;
+}
+
+section:hover .title {
+  height: calc(100% + 2.5em);
+  top: -2.5em;
+}
+
+section form {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 20px;
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+select {
+  padding: 5px 10px;
+  margin-bottom: 15px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+input {
+  border: none;
+  padding: 10px 20px 10px 5px;
+  border-radius: 20px;
+  font-size: 1em;
+  outline: 0;
+  border-radius: 2px;
+  background: transparent;
+  border-bottom: 1px solid #ccc;
+}
+
+input:disabled {
+  background: #eee;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  padding: 10px 20px;
+  background: var(--bg-light);
+  border: none;
+  border-radius: 20px;
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
+  color: #ffff;
+  background: var(--bg-dark);
+}
+
+label {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  font-size: 1em;
+  color: #8c8c8c;
+  pointer-events: none;
+}
+
+label[for="toggle"] {
+  position: relative;
+  top: initial;
+  left: initial;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 1px solid var(--asscent2);
+}
+
+input:focus~label,
+input:valid~label {
+  color: var(--asscent2);
+  top: -10px;
+  font-size: 0.9em;
+}
+
+input:focus:invalid {
+  outline: none;
+  border-bottom: 1px solid var(--asscent);
+}
+
+section:nth-child(3) form {
+  padding: 10px 5px 0px 10px;
+  flex-flow: row nowrap;
+}
+
+textarea {
+  resize: none;
+  min-height: 200px;
+  min-width: 500px;
+  border-radius: 5px;
+  border: none;
+  outline: 0;
+  line-height: 1.5;
+  background: transparent;
+  color: var(--bg-dark);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: url('./../images/bg_purple.png');
+}
+
+::-webkit-scrollbar-thumb {
+  width: 3px;
+  border-radius: 3px;
+  border: 0.5px solid var(--asscent);
+  background: var(--bg-light);
+}

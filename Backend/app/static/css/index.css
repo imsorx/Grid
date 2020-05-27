@@ -1,0 +1,171 @@
+@font-face {
+  font-family: "Dosis";
+  src: url(/fonts/Dosis.ttf) format("truetype");
+}
+:root {
+  --text: rgb(255, 255, 255);
+  --background: rgb(28, 31, 43);
+  --bg-light:#252838;
+  --bg-50: rgba(0,0,0,0.5);
+  --bg-20: rgba(0,0,0,0.2);
+  --bg-05: rgba(0,0,0,0.05);
+  --primary: rgb(33, 150, 243);
+  --secondary: rgb(29, 233, 182);
+}
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color:var(--text);
+  font-family: "Dosis", sans-serif;
+  letter-spacing: 1.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.container {
+  display: flex;
+  width: 90%;
+  height: 90%;
+  background: var(--bg-light);
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px var(--bg-05),
+              4px 2px 8px var(--bg-05),
+              6px 2px 16px var(--bg-05);
+  overflow: hidden;
+}
+.sidebar {
+  position: relative;
+  height: 100%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: var(--bg-light);
+  box-shadow: 2px 0 2px var(--bg-05), 
+              4px 0 4px var(--bg-05),
+              8px 0 8px var(--bg-05);
+  z-index: 10;
+}
+
+.sidebar ul {
+  margin: auto 0;
+  list-style: none;
+}
+.sidebar ul li {
+  padding: 10px 40px;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.sidebar ul li i {
+  font-size: 1.5em;
+}
+.sidebar ul li span {
+  display: inline-block;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.sidebar ul li:hover {
+  background: var(--primary);
+}
+
+.sidebar:hover ul li span {
+  width: max-content;
+  opacity: 1;
+}
+.main {
+  flex: 3;
+  position: relative;
+}
+.section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  opacity: 0;
+  z-index: 0;
+  transform: translateX(-50%);
+}
+
+.section-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.section > .title {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5em;
+  font-weight: 400;
+  padding-bottom: 10px;
+}
+.section > .details {
+  height: 90%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
+.section .details::-webkit-scrollbar{
+  height: 80%;
+  width: 10px;
+  border-radius: 5px;
+  background: var(--bg-20);
+}
+.section .details::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background: var(--secondary);
+}
+
+.section .details > div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.1);
+  border: solid 1px var(--bg-20);
+  border-radius: 3px;
+  padding: 10px;
+  margin: 5px 0;
+}
+.section .details > div > input{
+  background: var(--bg-light);
+  border: none;
+  font-family: 'Dosis';
+  font-size: 1.1em;
+  letter-spacing: 1px;
+  padding: 2px 5px;
+  color: var(--text);
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px var(--bg-20);
+}
+.success {
+  color: var(--secondary);
+}
+.fail{
+  color: rgb(247, 103, 48);
+}
+.edit,.reload{
+  cursor: pointer;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./images/home.ico" type="image/x-icon">
+  <title>Grid API</title>
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.7/css/unicons.css">
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <ul>
+        <li><i class="uil uil-servers"></i><span>Status</span></li>
+        <li><i class="uil uil-sliders-v-alt"></i><span>Manage</span></li>
+        <li><i class="uil uil-setting"></i><span>Config</span></li>
+      </ul>
+    </div>
+    <div class="main">
+      <div id="status" class="section section-active">
+        <div class="title">
+          <p>Status</p>
+          <i class="uil uil-refresh reload"></i>
+        </div>
+        <div class="details">
+          <div class="db">
+            <p>Database</p>
+            <i class="uil uil-check-circle success">Connected</i>
+          </div>
+          <div class="sv">
+            <p>Server load</p>
+            <p class="success">Idle</p>
+          </div>
+        </div>
+      </div>
+      <div id="manage" class="section">
+        <div class="title">
+          <p>Management</p>
+          <i class="uil uil-refresh reload"></i>
+        </div>
+        <div class="details">
+
+        </div>
+      </div>
+      <div id="config" class="section">
+        <div class="title">
+          <p>Configuration</p>
+          <i class="uil uil-refresh reload"></i>
+        </div>
+        <div class="details">
+          <div>Port <input type="text" name="port" id="port" value="4040"></div>
+          <div>Root URL Path <input type="text" name="path" id="path" value="/"></div>
+          <div>Database Password <input type="text" name="passoword" id="password" value="123"></div>
+          <div>Hashing Key <input type="text" name="key" id="key" value="salt"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/axios.min.js"></script>
+  <script src="js/index.js"></script>
+
+</body>
+
+</html>

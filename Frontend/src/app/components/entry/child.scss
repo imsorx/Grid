@@ -1,0 +1,125 @@
+:host{
+    display: block;
+  }
+  .container {
+    width: 100%;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .errormsg{
+      text-align: center;
+      width: 80%;
+      color: rgba($color: #dd2f72, $alpha: 1.0);
+    }
+    form{
+      font-size: 11px;
+      text-align: center;
+    }
+    .inputgrp{
+      margin-top:20px;
+      position: relative;
+      input {
+        padding: 10px 10px;
+        border: none;
+        outline-style: none;
+        color: $secondary;
+        font-size: 14px;
+      }
+  
+      input::placeholder {
+        color: $bg-txt;
+      }
+      &::before{
+        content: '';
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 0;
+        background:$bg-txt;
+      }
+      &:after{
+        content: '';
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        background: $gradient;
+        transform: scale(0);
+        transition: transform 300ms;
+      }
+      &:focus-within::after{
+        transform: scale(1);
+      }
+      i{
+        opacity: 0.5;
+      }
+      &:focus-within i{
+        opacity: 1;
+        color: $asscent;
+      }
+    }
+    
+  
+    button {
+      margin-top: 25px;
+      background-image: $gradient;
+      background-size: 200%;
+      color: $primary;
+      border: none;
+      border-radius: 28px;
+      padding: 8px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 5px 5px 10px -5px $asscent;
+      transition: all 200ms ease-in-out;
+      -webkit-user-select: none;
+      &:hover {
+        box-shadow: 2px 8px 15px -5px $asscent;
+      }
+      &:focus {
+        outline: none;
+      }
+      &:active {
+        outline: 0;
+        box-shadow: 2px 6px 15px -5px $asscent;
+        background-image: $gradient_dark;
+      }
+  
+    }
+  }
+  
+  .reginfo {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    p {
+      -webkit-user-select: none;
+      color: $primary;
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    .regbtn {
+      -webkit-user-select: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 200ms ease-in-out;
+      &:hover {
+        text-shadow: $dark20;
+        color: $primary;
+      }
+      &:focus{
+        outline: none;
+      }
+    }
+  }
+  

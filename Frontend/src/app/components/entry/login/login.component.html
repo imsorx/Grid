@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="errormsg" *ngIf="error">{{error}}</div>
+  <form #loginform="ngForm" (ngSubmit)="auth(loginform)">
+    <div class="inputgrp">
+      <i class="uil uil-envelope"></i
+      ><input
+        type="email"
+        ngModel
+        name="username"
+        id="username"
+        placeholder="Username"
+        required
+      />
+    </div>
+    <div class="inputgrp">
+      <i class="uil uil-lock"></i
+      ><input
+        type="password"
+        ngModel
+        name="password"
+        id="password"
+        placeholder="Password"
+        required
+      />
+    </div>
+    <div>
+      <button type="submit">Sign in<i class="uil uil-arrow-right"></i></button>
+    </div>
+  </form>
+</div>
+<div class="reginfo">
+  <p>Don't have account?</p>
+  <p class="regbtn" [routerLink]="['/entry', 'signup']">Register here!</p>
+</div>
