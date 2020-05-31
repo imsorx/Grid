@@ -27,12 +27,12 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
-        data:{animation: 'loginpage'}
+        data: { animation: 'loginpage' }
       },
       {
         path: 'signup',
         component: SignupComponent,
-        data:{animation: 'signuppage'}
+        data: { animation: 'signuppage' }
       }
     ]
   },
@@ -66,7 +66,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

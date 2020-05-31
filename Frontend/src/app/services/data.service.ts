@@ -1,30 +1,34 @@
-import { Injectable } from "@angular/core";
-import { httpService } from "./http.service";
+import { Injectable } from '@angular/core';
+import { httpService } from './http.service';
+
+interface User {
+  token: string;
+  _id: string;
+  img: string;
+  name: string;
+  mail: string;
+  convers: string[];
+  channels: string[];
+}
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
+
+
 export class DataService {
-  users = [];
-  user: object;
+
+  users: User[] = [];
 
   constructor(private http: httpService) {
-    http.getUsers().subscribe((usrs) => {
-      for (let user in usrs) {
-        this.users.push(user)
-      }
+  }
+
+  getuserlist(): Array<User> {
+    this.http.getUsers().subscribe((res: User[]) => {
+      res.forEach(user => {
+        this.users.push(user);
+      });
     });
-  }
-
-  getuserlist() {
     return this.users;
-  }
-
-  selecteduser(obj: object) {
-    this.user = obj;
-  }
-
-  getuser() {
-    return this.user;
   }
 }
