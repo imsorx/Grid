@@ -1,19 +1,21 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { ElectronService } from "ngx-electron";
+import { Component, OnInit, Input } from '@angular/core';
+import { ElectronService } from 'ngx-electron';
 
 
 @Component({
-  selector: "app-user",
-  templateUrl: "./user.component.html",
-  styleUrls: ["./user.component.scss"],
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss'],
 })
 export class UserComponent implements OnInit {
   @Input() userobj: any;
 
-  constructor(private electron: ElectronService) { }
+  constructor(private electron: ElectronService) {
+
+  }
+
   userclick() {
-    let mainWindow = this.electron.remote.process;
-    var win = new this.electron.remote.BrowserWindow({
+    const win = new this.electron.remote.BrowserWindow({
       width: 290,
       height: 550,
       center: true,
@@ -25,7 +27,7 @@ export class UserComponent implements OnInit {
       },
     });
     // Load the page + route
-    win.loadURL("file://" + __dirname + "/index.html#/chat");
+    win.loadURL('file://' + __dirname + '/index.html#/chat');
   }
 
   ngOnInit() { }
