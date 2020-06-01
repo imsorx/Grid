@@ -11,7 +11,7 @@ function newConverse(from, to) {
   newConvers.save((err, doc) => {
     if (!err) {
       doc.members.forEach((member) => {
-        User.findByIdAndUpdate(member, { $push: { convers: doc._id } });
+        User.findByIdAndUpdate(member, { $push: { convers: doc._id } }).exec();
       });
     } else {
       log.error(err);

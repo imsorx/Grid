@@ -27,7 +27,7 @@ function Engine(httpServer) {
   }
   function login(socket, userid) {
     if (users.has(userid)) {
-      throw new Error(`Username '${userid}' is taken!`);
+      throw new Error('Already logged in, Logout previous session first!');
     } else {
       socket.set("id", userid);
       users.forEach((user) => {
@@ -53,7 +53,7 @@ function Engine(httpServer) {
     members.forEach(member => {
       member = '' + member;
       if (member != from) {
-        sendMessage(member, "message", from, msgId, message);
+        sendMessage(member, "msg", from, msgId, message);
       }
     });
   }
@@ -67,7 +67,7 @@ function Engine(httpServer) {
           users.get(to).emit(event, from, message);
         }
       } else {
-        User.addPending(to, msgId);
+        User.addPendings(to, msgId);
       }
     } catch (err) {
       log.error(err)
@@ -106,8 +106,8 @@ function Engine(httpServer) {
 
 //Payload templates
 //{ "c": "convers","a": ["new", "5ebd48f5d9dcae0954979b78", "5ec93512d1c0b50360ba7472"] }
-//{ "c": "convers","a": ["message", "5ec93978a228d713bc1b43ac", "5ebd48f5d9dcae0954979b78", "Test"] }
-//{"a":["login","5ebd48f5d9dcae0954979b78"]}
-//{"a":["login","5ec93512d1c0b50360ba7472"]}
+// { "c": "convers","a": ["message", "5ec93978a228d713bc1b43ac", "5ebd48f5d9dcae0954979b78", "Test"] }
+// {"a":["login","5ebd48f5d9dcae0954979b78"]}
+// {"a":["login","5ec93512d1c0b50360ba7472"]}
 
 module.exports = Engine;

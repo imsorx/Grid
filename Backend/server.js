@@ -44,8 +44,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// Static Files
-app.use(express.static(__dirname + '/app/static/'));
+
 // Routes
 app.use(require('./app/routes'));
 
