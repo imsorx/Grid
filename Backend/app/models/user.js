@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
-const path = require('path');
 const config = require('../config.json');
 
-const AVATAR = `${path.join(config.storage.basePath, config.storage.avatarPath, 'default.png')}`;
+const AVATAR = `${config.storage.basePath, config.storage.avatarPath, 'default.png'}`;
 
 const userSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
@@ -13,6 +12,7 @@ const userSchema = mongoose.Schema({
   convers: [mongoose.Schema.Types.ObjectId],
   channels: [mongoose.Schema.Types.ObjectId],
   pendings: [String]
-}, { timestamps: true });
+},
+  { timestamps: true });
 
 module.exports = mongoose.model("User", userSchema);

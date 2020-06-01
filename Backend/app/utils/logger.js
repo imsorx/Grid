@@ -25,7 +25,9 @@ module.exports = {
     info: (data) => { console.log(generateString('info', data)) },
     warn: (data) => { console.log(generateString('warn', data)) },
     httpLogger: (req, res, next) => {
-        res.once('finish', () => { })
-        console.log(generateString('info', `${req.method} ${res.statusCode} ${req.url} - ${req.ip} `)); next();
+        if (req.method != 'OPTIONS') {
+            console.log(generateString('info', `${req.method} ${res.statusCode} ${req.url} - ${req.ip} `));
+        }
+        next();
     }
 };
