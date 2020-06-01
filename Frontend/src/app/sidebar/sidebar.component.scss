@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+.profile {
+  text-align: center;
+  height: 30%;
+  img {
+    height: 60px;
+    border-radius: 100%;
+  }
+}
+.items {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  .item {
+    text-decoration: none;
+    color: inherit;
+    padding: 18px 30px;
+    &:hover {
+      background: rgba($color: #fff, $alpha: 0.1);
+    }
+  }
+  .item:last-child {
+    margin-top: auto;
+  }
+}

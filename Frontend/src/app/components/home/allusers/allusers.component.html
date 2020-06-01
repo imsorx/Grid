@@ -1,9 +1,0 @@
-<div class="search">
-  <i class='icon uil uil-search'></i>
-  <input [(ngModel)]="searchfield" type="text" id="searchfield" placeholder="Search users..." />
-</div>
-<div [@flyin] class="userslist">
-  <div id="friends" *ngFor="let user of users | filter: searchfield">
-    <app-user  [userobj]="user"></app-user>
-  </div>
-</div>

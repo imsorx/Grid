@@ -1,29 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-*{
-    margin: 0;
-    padding:0;
-    box-sizing: border-box;
-    // font-family: 'Source Sans Pro', sans-serif;
-    // font-family: 'PT Sans', sans-serif;
-    font-family: 'Muli', sans-serif;
-    font-size:14px;
-}
-body{
-    height: 100vh;
-    width: 100vw;
-    background: transparent;
-    overflow: hidden;
-    animation: fadein 1s alternate;
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #ffffff;
+    background-color: #090c11;
+  }
 }
 
-router-outlet{
-    position: relative;
+:root{
+  font-family: sans-serif;
+  font-size: 14px;
 }
-@keyframes fadein{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
