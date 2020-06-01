@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "js" : "browserify app/static/js/test.js -o app/static/js/bundle.js"
+    "js": "browserify app/static/js/test.js -o app/static/js/bundle.js"
   },
   "author": "SorX",
   "license": "ISC",
