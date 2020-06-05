@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.container {
+  max-width: 80%;
+  background: var(--bg-light);
+  padding: 10px 10px 5px 10px;
+  border-radius: 10px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+
+  .time {
+    font-size: 0.8rem;
+    color: var(--fg-light);
+    align-self: flex-end;
+  }
+}
+.me{
+    align-self: flex-end;
+    background: var(--asst);
+}

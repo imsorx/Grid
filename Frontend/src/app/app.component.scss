@@ -1,16 +1,23 @@
 :host {
   display: grid;
-  grid-template-columns: minmax(100px, 200px) minmax(100px, 200px) 1fr 1fr;
+  grid-template-columns: minmax(200px, 250px) minmax(200px, 300px) 1fr 1fr;
+  grid-template-rows: 30px auto;
   justify-items: stretch;
   height: 100%;
+}
+
+titlebar {
+  grid-column: 1/5;
 }
 
 sidebar {
   grid-column: 1/2;
 }
+
 list {
   grid-column: 2/3;
 }
+
 chat {
   grid-column: 3/5;
 }

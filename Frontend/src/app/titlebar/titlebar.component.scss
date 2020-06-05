@@ -1,0 +1,46 @@
+ul {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-bottom: solid 2px var(--bg-dark);
+
+  li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+
+    img {
+      height: 16px;
+      width: 16px;
+    }
+
+    svg {
+      box-sizing: content-box;
+      padding: 0 8px;
+      height: 100%;
+      stroke: var(--fg-light);
+
+      &:hover {
+        stroke: var(--fg-color);
+        background: var(--bg-dark);
+      }
+
+      &:last-child:hover {
+        background: hsl(0, 76%, 45%);
+      }
+    }
+  }
+
+  .title {
+    font-size: 0.9rem;
+    color: var(--fg-light);
+    flex-grow: 1;
+    -webkit-app-region: drag;
+  }
+
+  li:last-child {
+    margin-left: auto;
+  }
+}

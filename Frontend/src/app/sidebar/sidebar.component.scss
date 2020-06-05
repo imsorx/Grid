@@ -2,27 +2,81 @@
   display: flex;
   flex-direction: column;
   justify-content: stretch;
+  background: var(--bg-dark);
 }
+
 .profile {
-  text-align: center;
-  height: 30%;
+  margin-bottom: 5px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+
+  .title {
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
   img {
-    height: 60px;
+    height: 80px;
+    width: 80px;
     border-radius: 100%;
+    border: solid var(--fg-color) 3px;
+    margin-bottom: 1rem;
+    box-shadow: -2px -1px 15px var(--shadow);
   }
 }
+
 .items {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+
   .item {
     text-decoration: none;
-    color: inherit;
+    color: var(--fg-light);
     padding: 18px 30px;
+    transition: all 200ms linear;
+
+    svg {
+      margin: auto 10px;
+      stroke: var(--fg-light);
+      transition: all 200ms linear;
+    }
+
+    &:hover svg {
+      stroke: var(--fg-color);
+    }
+
     &:hover {
-      background: rgba($color: #fff, $alpha: 0.1);
+      background: var(--bg-light);
+      color: inherit;
+    }
+
+  }
+
+  .active {
+    color: inherit;
+    background: var(--bg-light);
+    border-left: solid 4px var(--asst);
+    cursor: default;
+
+    svg {
+      stroke: var(--fg-color);
+
+    }
+
+    &:hover {
+      background: var(--bg-light);
     }
   }
+
   .item:last-child {
     margin-top: auto;
   }

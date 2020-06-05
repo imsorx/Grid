@@ -1,18 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
-@media (prefers-color-scheme: dark) {
-  body {
-    color: #ffffff;
-    background-color: #090c11;
+:root {
+  --bg-color: hsl(0, 0%, 10%);
+  --bg-dark: hsla(0, 0%, 0%, 0.2);
+  --bg-light: hsla(0, 0%, 100%, 0.05);
+  --fg-color: hsla(0, 0%, 100%, 0.9);
+  --fg-light: hsla(0, 0%, 100%, 0.5);
+  --shadow: hsla(0, 0%, 0%, 0.2);
+  --asst: hsl(256, 100%, 65%);
+}
+
+@media (prefer-color-scheme: dark) {
+  :root {
+    --bg-color: hsla(0, 0%, 90%, 1);
+    --bg-dark: hsla(0, 0%, 80%, 1);
+    --bg-light: hsla(0, 0%, 95%, 0.1);
+    --fg-color: hsla(0, 0%, 0%, 0.8);
+    --fg-light: hsla(0, 0%, 0%, 0.5);
+    --shadow: hsla(0, 0%, 0%, 0.2);
   }
 }
 
-:root{
-  font-family: sans-serif;
-  font-size: 14px;
-}
-html,
-body {
+* {
   margin: 0;
   padding: 0;
-  height: 100%;
+  box-sizing: border-box;
 }
+
+html,
+body {
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--fg-color);
+  background: var(--bg-color);
+  user-select: none;
+}
+
+::selection {
+  background: #7b4bff;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-button {
+  height: 15px;
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: hsla(0, 0%, 100%, 0.3);
+}
+

@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { ElectronService } from './core/services';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
+import * as Feather from 'feather-icons';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   constructor(
     public electronService: ElectronService,
     private translate: TranslateService
@@ -24,5 +26,8 @@ export class AppComponent {
     } else {
       console.log('Mode web');
     }
+  }
+  ngAfterViewInit() {
+    Feather.replace();
   }
 }
