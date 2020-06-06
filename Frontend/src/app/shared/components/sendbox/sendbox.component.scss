@@ -28,15 +28,12 @@
   &:focus {
     border: 1px solid var(--asst);
     background: var(--bg-dark);
-
   }
-
 }
 
 .icon {
-  margin: 5px 10px;
+  margin: auto 5px;
   color: var(--fg-light);
-
   &:hover {
     color: var(--fg-color);
   }

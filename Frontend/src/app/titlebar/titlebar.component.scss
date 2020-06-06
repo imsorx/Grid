@@ -16,17 +16,19 @@ ul {
       width: 16px;
     }
 
-    svg {
-      box-sizing: content-box;
-      padding: 0 8px;
+    span {
       height: 100%;
-      stroke: var(--fg-light);
+      svg {
+        box-sizing: content-box;
+        padding: 0 8px;
+        height: 100%;
+        stroke: var(--fg-light);
 
-      &:hover {
-        stroke: var(--fg-color);
-        background: var(--bg-dark);
+        &:hover {
+          stroke: var(--fg-color);
+          background: var(--bg-dark);
+        }
       }
-
       &:last-child:hover {
         background: hsl(0, 76%, 45%);
       }

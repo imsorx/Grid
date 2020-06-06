@@ -28,11 +28,12 @@
 html,
 body {
   height: 100%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 14px;
   line-height: 1.5;
   color: var(--fg-color);
   background: var(--bg-color);
+  overflow: hidden;
   user-select: none;
 }
 
@@ -42,6 +43,7 @@ body {
 
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-button {
@@ -53,4 +55,3 @@ body {
   border-radius: 5px;
   background: hsla(0, 0%, 100%, 0.3);
 }
-

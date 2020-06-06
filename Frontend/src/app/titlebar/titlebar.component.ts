@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ElectronService } from '../core/services';
 
 
@@ -8,23 +8,20 @@ import { ElectronService } from '../core/services';
     styleUrls: ['titlebar.component.scss']
 })
 
-export class TitlebarComponent implements AfterViewInit {
+export class TitlebarComponent {
 
     win: Electron.BrowserWindow;
 
     constructor(private electron: ElectronService) {
-        this.win = electron.remote.getCurrentWindow();
+        this.win = this.electron.remote.getCurrentWindow();
+        console.log(this.win);
     }
 
     minimize() {
         this.win.minimize();
+        console.log('Clicked');
     }
     close() {
         this.win.close();
-    }
-    ngAfterViewInit() {
-        // Feather.replace();
-        document.getElementById('minus').addEventListener('click', () => this.minimize())
-        document.getElementById('x').addEventListener('click', () => this.close());
     }
 }

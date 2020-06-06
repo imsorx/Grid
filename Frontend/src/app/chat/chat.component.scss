@@ -5,8 +5,10 @@
 }
 
 .messages {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column-reverse;
+  height: 100%;
+  width: 100%;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
 }
