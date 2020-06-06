@@ -15,14 +15,15 @@ function createWindow() {
         width: size.width,
         height: size.height,
         frame: false,
+        resizable: false,
         webPreferences: {
             nodeIntegration: true,
             allowRunningInsecureContent: (serve) ? true : false,
         },
     });
     if (serve) {
-        require('devtron').install();
-        // win.webContents.openDevTools();
+        // require('devtron').install();
+        win.webContents.openDevTools();
         require('electron-reload')(__dirname, {
             electron: require(__dirname + "/node_modules/electron")
         });

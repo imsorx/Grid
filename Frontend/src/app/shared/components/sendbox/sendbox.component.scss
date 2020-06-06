@@ -1,0 +1,43 @@
+:host {
+  padding: 20px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.container {
+  height: auto;
+  width: 100%;
+}
+
+.container div {
+  max-height: 200px;
+  width: 100%;
+  flex: 1 1 auto;
+  padding: 5px 10px;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background: var(--bg-light);
+  color: inherit;
+  font-family: inherit;
+  word-break: break-word;
+  transition: all 200ms;
+  overflow: auto;
+  position: relative;
+
+  &:focus {
+    border: 1px solid var(--asst);
+    background: var(--bg-dark);
+
+  }
+
+}
+
+.icon {
+  margin: 5px 10px;
+  color: var(--fg-light);
+
+  &:hover {
+    color: var(--fg-color);
+  }
+}

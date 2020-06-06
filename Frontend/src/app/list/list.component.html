@@ -1,1 +1,6 @@
-List
+<div class="input-group">
+    <input id="search" type="text" placeholder="Search users..">
+    <i data-feather="search" class="icon"></i>
+</div>
+
+<user *ngFor="let user of users" [name]="user.name" [msg]="user.lstMsg"></user>

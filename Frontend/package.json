@@ -95,6 +95,6 @@
     "node": ">=10.13.0"
   },
   "dependencies": {
-    "custom-electron-titlebar": "3.2.2-hotfix62"
+    "feather-icons": "4.28.0"
   }
 }

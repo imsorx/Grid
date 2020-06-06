@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ListComponent } from './list/list.component';
 import { ChatComponent } from './chat/chat.component';
-
+import { TitlebarComponent } from './titlebar/titlebar.component';
 // NG Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -27,10 +27,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
     SidebarComponent,
     ListComponent,
-    ChatComponent
+    ChatComponent,
+    TitlebarComponent
   ],
   imports: [
     BrowserModule,
