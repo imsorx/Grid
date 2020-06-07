@@ -4,11 +4,15 @@
   flex-direction: column;
 }
 
-.messages {
-  height: 100%;
-  width: 100%;
+#messages {
+  flex-grow: 1;
   padding: 30px;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  
+  message:nth-child(1) {
+    margin-top: auto;
+  }
 }

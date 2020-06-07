@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, AfterViewChecked } from '@angular/core';
 
 @Component({
     selector: 'chat',
@@ -6,7 +6,9 @@ import { Component, AfterViewInit } from '@angular/core';
     styleUrls: ['./chat.component.scss']
 })
 
-export class ChatComponent implements AfterViewInit {
+export class ChatComponent implements AfterViewInit, AfterViewChecked {
+
+    messagesContainer: HTMLElement;
     dummy = [
         {
             own: true,
@@ -20,7 +22,8 @@ export class ChatComponent implements AfterViewInit {
             own: false,
             data: 'By the orders of Peaky Blinders!'
         }
-        ,        {
+        ,
+        {
             own: true,
             data: 'Please! you will get your shipment by tommorow'
         },
@@ -31,7 +34,32 @@ export class ChatComponent implements AfterViewInit {
         {
             own: false,
             data: 'By the orders of Peaky Blinders!'
-        },        {
+        },
+        {
+            own: true,
+            data: 'Please! you will get your shipment by tommorow'
+        },
+        {
+            own: false,
+            data: 'You are oliberated'
+        },
+        {
+            own: false,
+            data: 'By the orders of Peaky Blinders!'
+        },
+        {
+            own: true,
+            data: 'Please! you will get your shipment by tommorow'
+        },
+        {
+            own: false,
+            data: 'You are oliberated'
+        },
+        {
+            own: false,
+            data: 'By the orders of Peaky Blinders!'
+        },
+        {
             own: true,
             data: 'Please! you will get your shipment by tommorow'
         },
@@ -45,15 +73,31 @@ export class ChatComponent implements AfterViewInit {
         }
     ]
     messages = []
+
+
     constructor() { }
-    ngAfterViewInit() {
+
+    pushmsg(): void {
         let count = 500;
         this.dummy.forEach(element => {
             setTimeout(() => {
                 this.messages.push(element);
-                console.log(element);
             }, count);
-            count += 300;
+            count += 500;
         });
+    }
+
+    autoscroll(): void {
+        this.messagesContainer = document.getElementById("messages");
+        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+    }
+
+
+
+    ngAfterViewInit() {
+        this.pushmsg();
+    }
+    ngAfterViewChecked() {
+        this.autoscroll();
     }
 }

@@ -1,5 +1,5 @@
 <topbar></topbar>
-<div class="messages">
+<div id="messages">
     <message *ngFor="let msg of messages" [me]="msg.own" [msg]="msg.data"></message>
 </div>
 <sendbox></sendbox>

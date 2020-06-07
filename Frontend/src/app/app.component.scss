@@ -1,7 +1,7 @@
 :host {
   display: grid;
   grid-template-columns: minmax(200px, 250px) minmax(200px, 300px) 1fr 1fr;
-  grid-template-rows: 30px auto;
+  grid-template-rows: 30px 1fr;
   justify-items: stretch;
   height: 100%;
 }
@@ -20,6 +20,7 @@ list {
 
 chat {
   grid-column: 3/5;
+  min-height: 0;
 }
 
 router-outlet {

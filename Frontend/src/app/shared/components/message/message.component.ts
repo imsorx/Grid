@@ -7,9 +7,10 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['message.component.scss']
 })
 
-export class MessageComponent {
-    @Input() me: boolean; 
+export class MessageComponent{
+    @Input() me: boolean;
     @Input() msg: string;
+    container: HTMLElement;
     date = new Date();
     time: string = `${this.date.getUTCHours()}:${this.date.getUTCMinutes()} AM`;
     constructor() { }
