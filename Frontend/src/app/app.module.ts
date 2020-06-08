@@ -5,48 +5,35 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
 
+//Modules
+import { SharedModule } from './shared/shared.module';
+import { EntryModule } from './Modules/Entry/entry.module';
+import { HomeModule } from './Modules/Home/home.module';
+import { SettingsModule } from './Modules/settings/settings.module';
+
+//Route
 import { AppRoutingModule } from './app-routing.module';
 
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { ListComponent } from './list/list.component';
-import { ChatComponent } from './chat/chat.component';
-import { TitlebarComponent } from './titlebar/titlebar.component';
-// NG Translate
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+//Root Component
 import { AppComponent } from './app.component';
 
-// AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
+//Services
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent,
-    ListComponent,
-    ChatComponent,
-    TitlebarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    CoreModule,
+
     SharedModule,
     AppRoutingModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+    EntryModule,
+    HomeModule,
+    SettingsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

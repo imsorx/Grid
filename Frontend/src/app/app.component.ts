@@ -1,6 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { ElectronService } from './core/services';
-import { TranslateService } from '@ngx-translate/core';
+import { ElectronService } from './Services/electron.service';
 import { AppConfig } from '../environments/environment';
 import * as Feather from 'feather-icons';
 
@@ -13,9 +12,7 @@ import * as Feather from 'feather-icons';
 export class AppComponent implements AfterViewInit {
   constructor(
     public electronService: ElectronService,
-    private translate: TranslateService
   ) {
-    translate.setDefaultLang('en');
     console.log('AppConfig', AppConfig);
 
     if (electronService.isElectron) {

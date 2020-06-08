@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ElectronService } from '../core/services';
+import { ElectronService } from '../../../Services/electron.service';
 
 
 @Component({
@@ -14,12 +14,10 @@ export class TitlebarComponent {
 
     constructor(private electron: ElectronService) {
         this.win = this.electron.remote.getCurrentWindow();
-        console.log(this.win);
     }
 
     minimize() {
         this.win.minimize();
-        console.log('Clicked');
     }
     close() {
         this.win.close();

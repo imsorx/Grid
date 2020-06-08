@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TitlebarComponent } from './components/';
-import { WebviewDirective } from './directives/';
 import { FormsModule } from '@angular/forms';
+
+import { EntryComponent } from './entry.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-    WebviewDirective,
-    TitlebarComponent
+    LoginComponent,
+    EntryComponent
   ],
   imports: [CommonModule, FormsModule],
   exports: [
-    WebviewDirective,
     FormsModule,
-    TitlebarComponent
+    EntryComponent
   ]
 })
-export class SharedModule { }
+export class EntryModule { }
