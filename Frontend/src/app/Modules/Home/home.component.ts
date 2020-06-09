@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as Feather from 'feather-icons';
 
 @Component({
-    selector: 'home',
-    template: '<sidebar></sidebar><list></list><chat></chat>',
-    styles: [`
+  selector: 'home',
+  template: '<sidebar></sidebar><list></list><chat></chat>',
+  styles: [`
     :host {
         display: grid;
         grid-template-columns: minmax(200px, 250px) minmax(200px, 300px) 1fr 1fr;
         justify-items: stretch;
-        height: 100%;
+        height: calc(100% - 30px);
         width:100%;
     }
     sidebar {
@@ -27,6 +28,9 @@ import { Component } from '@angular/core';
 })
 
 
-export class HomeComponent {
-    constructor() { }
+export class HomeComponent implements OnInit {
+  constructor() { }
+  ngOnInit(){
+    Feather.replace();
+  }
 }

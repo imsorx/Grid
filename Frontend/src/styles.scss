@@ -8,7 +8,7 @@
   --asst: hsl(256, 100%, 65%);
 }
 
-@media (prefer-color-scheme: dark) {
+@media (prefer-color-scheme: light) {
   :root {
     --bg-color: hsla(0, 0%, 90%, 1);
     --bg-dark: hsla(0, 0%, 80%, 1);
@@ -51,7 +51,7 @@ body {
   width: 15px;
 }
 
-::-webkit-scrollbar-thumb {
-  border-radius: 15px;
+:hover::-webkit-scrollbar-thumb {
+  border-radius: 5px 0 0 5px;
   background: var(--asst);
 }

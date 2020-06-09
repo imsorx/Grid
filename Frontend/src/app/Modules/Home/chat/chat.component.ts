@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
     selector: 'chat',
@@ -6,9 +6,8 @@ import { Component, AfterViewInit, AfterViewChecked } from '@angular/core';
     styleUrls: ['./chat.component.scss']
 })
 
-export class ChatComponent implements AfterViewInit, AfterViewChecked {
+export class ChatComponent implements AfterViewInit{
 
-    messagesContainer: HTMLElement;
     dummy = [
         {
             own: true,
@@ -87,17 +86,8 @@ export class ChatComponent implements AfterViewInit, AfterViewChecked {
         });
     }
 
-    autoscroll(): void {
-        this.messagesContainer = document.getElementById("messages");
-        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
-    }
-
-
 
     ngAfterViewInit() {
         this.pushmsg();
-    }
-    ngAfterViewChecked() {
-        this.autoscroll();
     }
 }

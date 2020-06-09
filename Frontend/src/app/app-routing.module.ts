@@ -7,12 +7,12 @@ import { EntryComponent } from './Modules/Entry/entry.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'entry',
     component: EntryComponent,
     pathMatch: 'full'
   },
   {
-    path: 'home',
+    path: '',
     component: HomeComponent
   },
   {
