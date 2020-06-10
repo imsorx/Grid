@@ -8,12 +8,12 @@ import { EntryComponent } from './Modules/Entry/entry.component';
 const routes: Routes = [
   {
     path: 'entry',
-    component: EntryComponent,
-    pathMatch: 'full'
+    component: EntryComponent
   },
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    pathMatch: 'full'
   },
   {
     path: 'settings',

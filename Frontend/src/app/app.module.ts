@@ -4,10 +4,10 @@ import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 //Modules
-import { SharedModule } from './shared/shared.module';
+import { SharedModule } from './Common/shared.module';
 import { EntryModule } from './Modules/Entry/entry.module';
 import { HomeModule } from './Modules/Home/home.module';
 import { SettingsModule } from './Modules/settings/settings.module';

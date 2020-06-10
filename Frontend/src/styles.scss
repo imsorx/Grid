@@ -8,15 +8,13 @@
   --asst: hsl(256, 100%, 65%);
 }
 
-@media (prefer-color-scheme: light) {
-  :root {
-    --bg-color: hsla(0, 0%, 90%, 1);
-    --bg-dark: hsla(0, 0%, 80%, 1);
-    --bg-light: hsla(0, 0%, 95%, 0.1);
-    --fg-color: hsla(0, 0%, 0%, 0.8);
-    --fg-light: hsla(0, 0%, 0%, 0.5);
-    --shadow: hsla(0, 0%, 0%, 0.2);
-  }
+.light {
+  --bg-color: hsla(0, 0%, 90%, 1);
+  --bg-dark: hsla(0, 0%, 80%, 1);
+  --bg-light: hsla(0, 0%, 95%, 0.1);
+  --fg-color: hsla(0, 0%, 0%, 0.8);
+  --fg-light: hsla(0, 0%, 0%, 0.5);
+  --shadow: hsla(0, 0%, 0%, 0.2);
 }
 
 * {

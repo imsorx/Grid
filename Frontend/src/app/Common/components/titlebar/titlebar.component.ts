@@ -11,15 +11,22 @@ import { ElectronService } from '../../../Services/electron.service';
 export class TitlebarComponent {
 
     win: Electron.BrowserWindow;
+    body: HTMLElement = document.body;
+    isDark: boolean = true;
+
 
     constructor(private electron: ElectronService) {
         this.win = this.electron.remote.getCurrentWindow();
     }
 
-    minimize() {
+    minimize(): void {
         this.win.minimize();
     }
-    close() {
+    close(): void {
         this.win.close();
+    }
+    toggleMode(): void {
+        this.body.classList.toggle('light');
+        this.isDark = !this.isDark;
     }
 }
