@@ -33,12 +33,13 @@ function createWindows() {
     });
     if (serve) {
         // require('devtron').install();
-        // win.webContents.openDevTools();
-        // entry.webContents.openDevTools();
+        win.webContents.openDevTools();
+        entry.webContents.openDevTools();
         require('electron-reload')(__dirname, {
             electron: require(__dirname + "/node_modules/electron")
         });
         entry.loadURL('http://localhost:4200/entry');
+        win.loadURL('http://localhost:4200');
     }
     else {
         win.loadURL(url.format({
@@ -48,7 +49,6 @@ function createWindows() {
         }));
     }
     electron_1.ipcMain.handle('auth', function (event, arg) {
-        win.loadURL('http://localhost:4200');
         if (arg == 200) {
             win.show();
             entry.hide();

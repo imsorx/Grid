@@ -3,21 +3,20 @@
   <p class="title">John Doe</p>
   <p class="subtitle">johdoe@gmail.com</p>
 </div>
-<div class="items">
-  <a href="#" class="item active">
-    <p><i data-feather="message-square" height="16px" width="16px"></i><span>Conversations</span>
-    </p>
-  </a>
-  <a href="#" class="item">
-    <p><i data-feather="hash" height="16px" width="16px"></i><span>Channels</span></p>
-  </a>
-  <a href="#" class="item">
-    <p><i data-feather="users" height="16px" width="16px"></i><span>Users</span></p>
-  </a>
-  <a (click)="logout()" class="item">
-    <p><i data-feather="log-out" height="16px" width="16px"></i><span>Logout</span></p>
-  </a>  
-  <a href="#" class="item">
-    <p><i data-feather="settings" height="16px" width="16px"></i><span>Settings</span></p>
-  </a>
-</div>
+<ul class="items">
+  <li class="item active">
+    <i data-feather="message-square" width="16px"></i>Conversations
+  </li>
+  <li class="item">
+    <i data-feather="hash" width="16px"></i>Channels
+  </li>
+  <li class="item">
+    <i data-feather="users" width="16px"></i>Users
+  </li>
+  <li class="item" (click)="logout()">
+    <i data-feather="log-out" width="16px"></i>Logout
+  </li>
+  <li class="item">
+    <i data-feather="sliders" width="16px"></i>Settings
+  </li>
+</ul>

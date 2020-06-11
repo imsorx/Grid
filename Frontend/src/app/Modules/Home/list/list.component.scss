@@ -23,18 +23,19 @@
     margin: 0 auto;
     border-radius: 50px;
     outline: none;
+    font-family: 'Poppins';
     color: var(--fg-color);
-    border: 1px solid var(--bg-dark);
+    border: 2px solid var(--bg-dark);
     transition: all 200ms;
   }
 
   input::placeholder {
-    font-family: inherit;
+    font-family: 'Poppins';
     color: var(--fg-light);
   }
 
   input:focus {
-    border: 1px solid var(--asst);
+    border: 2px solid var(--asst);
   }
 
   .icon {
@@ -42,7 +43,7 @@
     height: 20px;
     right: 0;
     margin-right: 22px;
-    stroke: var(--fg-light);
+    opacity: 0.5;
   }
 
 }

@@ -2,6 +2,7 @@
   padding: 15px;
   display: flex;
   align-items: flex-end;
+  background: var(--bg-light);
 }
 
 .container {
@@ -15,7 +16,7 @@
   flex: 1 1 auto;
   padding: 5px 10px;
   outline: none;
-  border: 1px solid transparent;
+  border: 2px solid var(--bg-dark);
   border-radius: 20px;
   background: var(--bg-light);
   color: inherit;
@@ -26,15 +27,15 @@
   position: relative;
 
   &:focus {
-    border: 1px solid var(--asst);
-    background: var(--bg-dark);
+    border: 2px solid var(--asst);
   }
 }
 
 .icon {
   margin: auto 5px;
-  color: var(--fg-light);
+  opacity: 0.5;
+  transition: opacity 200ms;
   &:hover {
-    color: var(--fg-color);
+    opacity: 0.9;
   }
 }
