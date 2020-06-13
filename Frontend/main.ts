@@ -37,8 +37,8 @@ function createWindows(): BrowserWindow {
   if (serve) {
 
     // require('devtron').install();
-    // win.webContents.openDevTools();
-    // entry.webContents.openDevTools();
+    win.webContents.openDevTools();
+    entry.webContents.openDevTools();
 
     require('electron-reload')(__dirname, {
       electron: require(`${__dirname}/node_modules/electron`)
