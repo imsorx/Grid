@@ -3,6 +3,7 @@
   align-items: center;
   padding: 10px 20px;
   background: var(--bg-light);
+  box-shadow: 12px 4px 12px var(--shadow);
 }
 
 img {
@@ -25,10 +26,11 @@ p {
   .icon {
     height: 20px;
     margin: 0 10px;
-    color: var(--fg-light);
+    opacity: 0.5;
+    transition: opacity 200ms;
 
     &:hover {
-      color: inherit;
+      opacity: 0.9;
     }
   }
 }
