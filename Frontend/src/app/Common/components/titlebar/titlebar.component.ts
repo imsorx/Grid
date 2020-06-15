@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ElectronService } from '../../../Services/electron.service';
+import { CoreService } from '../../../Services/core.service';
 
 
 @Component({
@@ -11,11 +12,10 @@ import { ElectronService } from '../../../Services/electron.service';
 export class TitlebarComponent {
 
     win: Electron.BrowserWindow;
-    body: HTMLElement = document.body;
     isDark: boolean = true;
 
 
-    constructor(private electron: ElectronService) {
+    constructor(private electron: ElectronService, private core: CoreService) {
         this.win = this.electron.remote.getCurrentWindow();
     }
 
@@ -26,7 +26,6 @@ export class TitlebarComponent {
         this.win.close();
     }
     toggleMode(): void {
-        this.body.classList.toggle('light');
-        this.isDark = !this.isDark;
+        this.isDark = this.core.toggleTheme();
     }
 }
