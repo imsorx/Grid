@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoreService } from '../../../Services/core.service'
 
 @Component({
     selector: 'list',
@@ -7,24 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ListComponent implements OnInit {
-    users = [
-        {
-            name:'Thomas Shelby',
-            lstMsg:'By the order of Peaky Blinders!',
-            img:'assets/thomas.jpg'
-        },
-        {
-            name:'Heisenberg',
-            lstMsg:'Say my NAME!',
-            img:'assets/heisenberg.jpg'
-        },
-        {
-            name:'John Snow',
-            lstMsg:'The Winter is Coming!',
-            img:'assets/jon.jpg'
-        }
-    ]
-    constructor() { }
+    users = [];
+    constructor(private core: CoreService) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.core.users.subscribe(user => { this.users.push(user) });
+    }
 }

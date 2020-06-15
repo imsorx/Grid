@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'topbar',
@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
 })
 
 export class TopbarComponent {
+    @Input() img:string;
+    @Input() name:string;
+
     constructor() { }
 }

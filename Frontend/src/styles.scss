@@ -18,7 +18,7 @@
   --bg-color: hsla(0, 0%, 95%, 1);
   --bg-dark: hsla(0, 0%, 90%, 1);
   --bg-light: hsla(0, 0%, 100%, 1);
-  --fg-color: hsla(0, 0%, 0%, 0.8);
+  --fg-color: hsla(0, 0%, 30%, 1);
   --fg-light: hsla(0, 0%, 0%, 0.5);
   --shadow: hsla(0, 0%, 0%, 0.1);
   --gradient: linear-gradient(
@@ -48,6 +48,7 @@ body {
   background: var(--bg-color);
   overflow: hidden;
   user-select: none;
+  position: relative;
 }
 
 ::selection {
@@ -67,4 +68,36 @@ body {
 :hover::-webkit-scrollbar-thumb {
   border-radius: 5px 0 0 5px;
   background: var(--asst);
+}
+
+.loader {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 20px;
+    width: 20px; 
+    border-radius: 100%;
+    border: 2px solid var(--asst);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  &::after {
+    animation: pulse 2s infinite ease-out;
+  }
+  &::before {
+    animation: pulse 2s infinite -1s ease-out;
+  }
+}
+@keyframes pulse {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2);
+  }
 }

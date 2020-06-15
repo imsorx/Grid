@@ -23,9 +23,10 @@ function createWindows() {
     //Create the Entry window
     entry = new electron_1.BrowserWindow({
         parent: win,
-        height: 300,
-        width: 500,
+        height: 400,
+        width: 400,
         frame: false,
+        resizable: false,
         webPreferences: {
             nodeIntegration: true,
             allowRunningInsecureContent: (serve) ? true : false,
@@ -34,12 +35,12 @@ function createWindows() {
     if (serve) {
         // require('devtron').install();
         win.webContents.openDevTools();
-        entry.webContents.openDevTools();
+        // entry.webContents.openDevTools();
         require('electron-reload')(__dirname, {
             electron: require(__dirname + "/node_modules/electron")
         });
-        entry.loadURL('http://localhost:4200/entry');
-        win.loadURL('http://localhost:4200');
+        entry.loadURL('http://localhost:4200/');
+        win.loadURL('http://localhost:4200/home');
     }
     else {
         win.loadURL(url.format({

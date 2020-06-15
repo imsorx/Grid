@@ -1,4 +1,4 @@
-<topbar></topbar>
+<topbar [img]="img" [name] = "name"></topbar>
 <div id="messages">
     <message *ngFor="let msg of messages" [me]="msg.own" [msg]="msg.data"></message>
 </div>

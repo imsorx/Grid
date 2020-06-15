@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { ElectronService } from '../../../Services/electron.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,9 +14,10 @@ export class TitlebarComponent {
     win: Electron.BrowserWindow;
     body: HTMLElement = document.body;
     isDark: boolean = true;
+    showToggle: boolean = false;
 
 
-    constructor(private electron: ElectronService) {
+    constructor(private electron: ElectronService, private route: Router) {
         this.win = this.electron.remote.getCurrentWindow();
     }
 

@@ -1,4 +1,7 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import * as Feather from 'feather-icons';
+import { CoreService } from '../../../Services/core.service';
 
 @Component({
     selector: 'chat',
@@ -6,58 +9,11 @@ import { Component, AfterViewInit } from '@angular/core';
     styleUrls: ['./chat.component.scss']
 })
 
-export class ChatComponent implements AfterViewInit{
-
+export class ChatComponent implements AfterViewInit, OnInit {
+    id: number;
+    name: string;
+    img: string;
     dummy = [
-        {
-            own: true,
-            data: 'Please! you will get your shipment by tommorow'
-        },
-        {
-            own: false,
-            data: 'You are oliberated'
-        },
-        {
-            own: false,
-            data: 'By the orders of Peaky Blinders!'
-        }
-        ,
-        {
-            own: true,
-            data: 'Please! you will get your shipment by tommorow'
-        },
-        {
-            own: false,
-            data: 'You are oliberated'
-        },
-        {
-            own: false,
-            data: 'By the orders of Peaky Blinders!'
-        },
-        {
-            own: true,
-            data: 'Please! you will get your shipment by tommorow'
-        },
-        {
-            own: false,
-            data: 'You are oliberated'
-        },
-        {
-            own: false,
-            data: 'By the orders of Peaky Blinders!'
-        },
-        {
-            own: true,
-            data: 'Please! you will get your shipment by tommorow'
-        },
-        {
-            own: false,
-            data: 'You are oliberated'
-        },
-        {
-            own: false,
-            data: 'By the orders of Peaky Blinders!'
-        },
         {
             own: true,
             data: 'Please! you will get your shipment by tommorow'
@@ -74,7 +30,14 @@ export class ChatComponent implements AfterViewInit{
     messages = []
 
 
-    constructor() { }
+    constructor(private route: ActivatedRoute, private core: CoreService) {
+        this.route.params.subscribe((params) => {
+            this.id = +params['id'];
+        })
+        let user: any = this.core.user(this.id);
+        this.name = user.name;
+        this.img = user.img;
+    }
 
     pushmsg(): void {
         let count = 500;
@@ -87,6 +50,9 @@ export class ChatComponent implements AfterViewInit{
     }
 
 
+    ngOnInit() {
+        Feather.replace();
+    }
     ngAfterViewInit() {
         this.pushmsg();
     }

@@ -1,19 +1,23 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { ElectronService } from '../../Services/electron.service';
+import * as Feather from 'feather-icons';
 
 @Component({
     selector: 'entry',
-    template: '<input type="button" value="ENTER" (click)="enter()">',
-    styles: [':host{width:100%;height:100%;display:grid;place-content:center}']
+    templateUrl: 'entry.component.html',
+    styleUrls: ['entry.component.scss']
 })
 
 
-export class EntryComponent {
+export class EntryComponent implements OnInit {
 
     constructor(private electron: ElectronService) { }
 
     enter(): void {
         this.electron.ipcRenderer.invoke('auth', 200);
-        console.log('working')
+    }
+
+    ngOnInit(){
+        Feather.replace();
     }
 }
