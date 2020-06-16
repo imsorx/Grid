@@ -4,6 +4,7 @@
     <p>Just fill in tiny details to get started!</p>
   </div>
   <form>
+    <div *ngIf="isFail" class="error">{{errMessage}}</div>
     <div class="input-group">
       <i data-feather="user" class="icon"></i>
       <input type="email" name="" id="" placeholder="E - mail Address" />
@@ -17,7 +18,7 @@
         sign in
         <i data-feather="chevron-right" class="icon"></i>
       </div>
-      <div class="btn secondary">
+      <div (click)="signup()" class="btn secondary">
         sign up
         <i data-feather="edit-2" class="icon"></i>
       </div>

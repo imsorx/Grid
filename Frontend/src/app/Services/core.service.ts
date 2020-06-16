@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
-import { create } from 'domain';
 
 
 @Injectable(
@@ -38,8 +37,8 @@ export class CoreService {
         return this.users$;
     }
 
-    user(id: number): object {
-        let user;
+    user(id: number): User {
+        let user: User;
         this.usersList.filter(x => {
             if (x.id == id) {
                 user = x;

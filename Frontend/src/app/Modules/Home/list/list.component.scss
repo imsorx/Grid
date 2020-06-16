@@ -50,6 +50,7 @@
 
 user {
   transition: all 200ms;
+  outline: none;
   &:hover {
     background-color: var(--bg-light);
   }
