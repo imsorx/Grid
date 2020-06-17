@@ -10,42 +10,18 @@ import { ChatService } from '../../../Services/chat.service';
 })
 
 export class ChatComponent implements AfterViewInit, OnInit {
-    user: User;
-    dummy = [
-        {
-            own: true,
-            data: 'Please! you will get your shipment by tommorow'
-        },
-        {
-            own: false,
-            data: 'You are oliberated'
-        },
-        {
-            own: false,
-            data: 'By the orders of Peaky Blinders!'
-        }
-    ]
-    messages = []
 
+    user: User;
+    messages: Message[] = [];
+
+    constructor(private chatService: ChatService) { }
     
-    constructor(private chatService: ChatService) {
-    }
-    
-    pushmsg(): void {
-        let count = 500;
-        this.dummy.forEach(element => {
-            setTimeout(() => {
-                this.messages.push(element);
-            }, count);
-            count += 500;
-        });
-    }
     
     ngOnInit() {
+        this.chatService.user.subscribe(u => this.user = u);
+        this.chatService.messages$.subscribe(m => this.messages.push(m));
         Feather.replace();
     }
     ngAfterViewInit() {
-        this.chatService.user.subscribe(user => this.user = user);
-        this.pushmsg();
     }
 }

@@ -9,6 +9,7 @@
     padding: 30px 40px;
     border-bottom: 1px solid var(--bg-light);
     background: var(--gradient);
+    z-index: 50;
     .title {
       font-size: 1.5rem;
     }
@@ -18,6 +19,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
 
     .input-group {
       display: flex;
@@ -75,4 +77,23 @@
 .icon {
   opacity: 0.8;
   height: 16px;
+}
+
+.error {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: hsl(7, 90%, 45%);
+  transform: translate(-50%, -100%);
+  animation: push .5s ease-out forwards;
+  z-index: 5;
+}
+
+@keyframes push {
+  to {
+    transform: translate(-50%, 50%);
+  }
 }
