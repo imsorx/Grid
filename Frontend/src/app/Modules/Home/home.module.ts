@@ -12,6 +12,7 @@ import { TopbarComponent } from './chat/topbar/topbar.component';
 import { MessageComponent } from './chat/message/message.component';
 import { SendboxComponent } from './chat/sendbox/sendbox.component';
 
+import { HomeRoutingModule } from './home-routing.module';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,12 @@ import { SendboxComponent } from './chat/sendbox/sendbox.component';
         MessageComponent,
         SendboxComponent
     ],
-    imports: [CommonModule, FormsModule],
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        FormsModule
+    ],
+    providers: [],
     exports: [
         FormsModule,
         HomeComponent

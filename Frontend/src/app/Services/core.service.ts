@@ -1,21 +1,56 @@
-import { Injectable } from '@angular/core';
-import { ElectronService } from './electron.service';
+import { Injectable } from '@angular/core'
+import { Observable, Observer } from 'rxjs'
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable(
+    {
+        providedIn: "root"
+    }
+)
 
 export class CoreService {
 
-    body: HTMLElement = document.body;
+    users$: Observable<object>;
+    usersList: User[] = [
+        {
+            id: 1,
+            name: 'Thomas Shelby',
+            lstMsg: 'By the order of Peaky Blinders!',
+            img: 'assets/thomas.jpg'
+        },
+        {
+            id: 2,
+            name: 'Heisenberg',
+            lstMsg: 'Say my NAME!',
+            img: 'assets/heisenberg.jpg'
+        },
+        {
+            id: 3,
+            name: 'John Snow',
+            lstMsg: 'The Winter is Coming!',
+            img: 'assets/jon.jpg'
+        }
+    ]
 
-    constructor(private electron: ElectronService) {
-        this.electron.remote.nativeTheme.shouldUseDarkColors
-     }
-
-
-    toggleTheme(): boolean {
-        this.body.classList.toggle('light');
-        return 
+    constructor() {
+        this.users$ = Observable.create((observer: Observer<User>) => {
+            this.usersList.forEach(user => observer.next(user));
+        });
     }
+
+    public get users(): Observable<object> {
+        return this.users$;
+    }
+
+    user(id: number): User {
+        let user: User;
+        this.usersList.filter(x => {
+            if (x.id == id) {
+                user = x;
+            }
+        })
+        return user;
+    }
+
+
+
 }

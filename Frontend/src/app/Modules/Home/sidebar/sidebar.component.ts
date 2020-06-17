@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ElectronService } from '../../../Services/electron.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,12 +11,15 @@ import { ElectronService } from '../../../Services/electron.service';
 
 export class SidebarComponent implements OnInit {
 
-    constructor(private electron: ElectronService) { }
+    constructor(private electron: ElectronService, private router: Router) { }
 
     logout(): void {
         this.electron.ipcRenderer.invoke('auth', 400);
     }
-    ngOnInit() {
 
+    toSettings(): void {
+        this.router.navigate(['settings']);
+    }
+    ngOnInit() {
     }
 }

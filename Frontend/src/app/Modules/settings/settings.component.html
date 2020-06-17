@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <div class="btn" (click)="toHome()">
+    <i data-feather="chevron-left"></i>
+    BACK
+  </div>
+  <div class="list">
+    <div class="item">
+      <p class="label">Start at System Start</p>
+      <div class="control">
+        <input type="checkbox" id="start" hidden />
+        <label for="start"></label>
+      </div>
+    </div>
+    <div class="item">
+      <p class="label">Closing minimize to System tray</p>
+      <div class="control">
+        <input type="checkbox" id="mini" hidden />
+        <label for="mini"></label>
+      </div>
+    </div>
+    <div class="item">
+      <p class="label">Notification timout</p>
+      <div class="control">
+        <select name="timout" id="timout">
+          <option value="200">200 ms</option>
+          <option value="">300 ms</option>
+          <option value="">400 ms</option>
+          <option value="">500 ms</option>
+          <option value="">1000 ms</option>
+          <option value="">1200 ms</option>
+          <option value="">1500 ms</option>
+          <option value="">2000 ms</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

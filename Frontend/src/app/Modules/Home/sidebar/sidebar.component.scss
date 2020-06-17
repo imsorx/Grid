@@ -42,21 +42,19 @@
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.9rem;
-    color: var(--fg-light);
     padding: 16px 30px;
-    transition: all 200ms linear;
     display: flex;
     align-items: center;
+    opacity: 0.8;
+    transition: all 200ms linear;
 
     svg {
       margin-right: 10px;
-      stroke: var(--fg-light);
       fill: transparent;
       transition: all 200ms linear;
     }
 
     &:hover svg {
-      stroke: var(--fg-color);
       fill: var(--fg-color);
     }
 
@@ -64,17 +62,13 @@
       background: var(--bg-light);
       color: inherit;
     }
-
   }
 
   .active {
-    color: var(--asst);
-
+    opacity: 1;
     svg {
-      stroke: var(--asst);
-      fill: var(--asst);
+      fill: var(--fg-color);
     }
-
   }
 
   .item:nth-child(4) {

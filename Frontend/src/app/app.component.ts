@@ -2,6 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import { ElectronService } from './Services/electron.service';
 import { AppConfig } from '../environments/environment';
 import * as Feather from 'feather-icons';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,6 +13,7 @@ import * as Feather from 'feather-icons';
 export class AppComponent implements AfterViewInit {
   constructor(
     public electronService: ElectronService,
+    private router: Router
   ) {
     console.log('AppConfig', AppConfig);
 
@@ -24,7 +26,20 @@ export class AppComponent implements AfterViewInit {
       console.log('Mode web');
     }
   }
+
+  // Print all path helper
+  printpath(parent: String, config: any) {
+    for (let i = 0; i < config.length; i++) {
+      const route = config[i];
+      console.log(parent + '/' + route.path);
+      if (route.children) {
+        const currentPath = route.path ? parent + '/' + route.path : parent;
+        this.printpath(currentPath, route.children);
+      }
+    }
+  }
   ngAfterViewInit() {
     Feather.replace();
+    // this.printpath('', this.router.config);
   }
 }
