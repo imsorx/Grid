@@ -1,12 +1,12 @@
 .wrapper {
-  height: 100%;
+  height: calc(100% - 30px);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   .hero {
     width: 100%;
-    padding: 30px 40px;
+    padding: 20px;
     border-bottom: 1px solid var(--bg-light);
     background: var(--gradient);
     z-index: 50;
@@ -15,18 +15,18 @@
     }
   }
   form {
-    height: 60%;
+    margin: auto 0;
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
 
     .input-group {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 10px;
-      padding-left: 8px;
+      margin-bottom: 12px;
+      padding-left: 4px;
       border-radius: 20px;
       border: 2px solid transparent;
       background: var(--bg-light);
@@ -46,10 +46,14 @@
       &:focus-within {
         border: 2px solid var(--asst);
       }
+      .icon{
+        margin:0 8px;
+        opacity: 0.5;
+      }
     }
     .cta {
       display: flex;
-      justify-content: space-evenly;
+      flex-direction: row-reverse;
       .btn {
         display: flex;
         align-items: center;
@@ -67,7 +71,8 @@
       }
       .secondary {
         background: transparent;
-        border: 2px solid var(--bg-light);
+        border: none;
+        box-shadow: none;
         opacity: 0.8;
       }
     }
@@ -75,25 +80,42 @@
 }
 
 .icon {
-  opacity: 0.8;
+  opacity: 1;
   height: 16px;
+  width: 16px;
 }
 
 .error {
   position: absolute;
-  top: 0;
+  display: flex;
+  align-items: flex-start;
+  bottom: 0;
   left: 50%;
-  width: 100%;
-  padding: 2px 8px;
+  width: 80%;
+  color: #eee;
+  padding: 4px 8px;
   border-radius: 12px;
   background-color: hsl(7, 90%, 45%);
-  transform: translate(-50%, -100%);
-  animation: push .5s ease-out forwards;
+  animation: push .2s ease-out forwards;
   z-index: 5;
+  .close{
+    margin-left: auto;
+    color: hsl(7, 90%, 45%);
+    font-weight: 700;
+    padding: 0 4px;
+    background: #eee;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 }
 
 @keyframes push {
+  from{
+    opacity: 0;
+    transform: translate(-50%,-40%);
+  }
   to {
-    transform: translate(-50%, 50%);
+    opacity: 1;
+    transform: translate(-50%,-50%);
   }
 }

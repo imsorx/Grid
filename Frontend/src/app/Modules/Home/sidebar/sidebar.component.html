@@ -1,7 +1,13 @@
 <div class="profile">
   <img src="" alt="John Doe" srcset="assets/avatar.jpg" />
-  <p class="title">John Doe</p>
-  <p class="subtitle">johdoe@gmail.com</p>
+  <p class="title">{{currentUser.name}}</p>
+  <div class="subtitle" [ngClass]="{active : viewMore}">
+    <p>{{currentUser.mail}}</p>
+    <p>Professor - CSE</p>
+  </div>
+  <div (click)="toggleviewMore()" [ngClass]="{rotate : viewMore}">
+    <i data-feather="chevron-down" class="toggle"></i>
+  </div>
 </div>
 <ul class="items">
   <li class="item active">

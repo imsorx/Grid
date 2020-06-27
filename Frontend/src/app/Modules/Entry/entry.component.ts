@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ElectronService } from '../../Services/electron.service';
 import * as Feather from 'feather-icons';
+import { httpService } from '../../Services/http.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'entry',
@@ -13,16 +15,27 @@ export class EntryComponent implements OnInit {
 
     errMessage: string;
     isFail: boolean = false;
-    constructor(private electron: ElectronService) { }
+    constructor(
+        private electron: ElectronService,
+        private http: httpService) { }
 
-    enter(): void {
-        this.electron.ipcRenderer.invoke('auth', 200);
+    submit(f: NgForm): void {
+        this.http.login(f.value).subscribe(
+            (res: User_details) => {
+                this.electron.ipcRenderer.invoke('auth', 200);
+                localStorage.setItem('user', JSON.stringify(res))
+            }, (err: Error) => {
+                this.displayError(err.message);
+            });
     }
 
     signup(): void {
-        this.errMessage = '503 Service Unavailable'
+        this.displayError('Not ye implemented');
+    }
+
+    displayError(message: string): void {
+        this.errMessage = message;
         this.isFail = !this.isFail;
-        setTimeout(() => this.isFail = !this.isFail, 2000);
     }
 
     ngOnInit() {

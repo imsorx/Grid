@@ -3,14 +3,26 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var electron_1 = require("electron");
 var path = require("path");
 var url = require("url");
-var win = null;
+var main = null;
 var entry = null;
 var args = process.argv.slice(1), serve = args.some(function (val) { return val === '--serve'; });
 function createWindows() {
     var electronScreen = electron_1.screen;
     var size = electronScreen.getPrimaryDisplay().workAreaSize;
+    //Create the Entry window
+    entry = new electron_1.BrowserWindow({
+        height: 350,
+        width: 350,
+        frame: false,
+        resizable: false,
+        webPreferences: {
+            nodeIntegration: true,
+            allowRunningInsecureContent: (serve) ? true : false,
+        }
+    });
     // Create the Main window.
-    win = new electron_1.BrowserWindow({
+    main = new electron_1.BrowserWindow({
+        parent: entry,
         minWidth: size.width * 0.8,
         minHeight: size.height * 0.8,
         frame: false,
@@ -20,30 +32,18 @@ function createWindows() {
         },
         show: false
     });
-    //Create the Entry window
-    entry = new electron_1.BrowserWindow({
-        parent: win,
-        height: 400,
-        width: 400,
-        frame: false,
-        resizable: false,
-        webPreferences: {
-            nodeIntegration: true,
-            allowRunningInsecureContent: (serve) ? true : false,
-        }
-    });
     if (serve) {
         // require('devtron').install();
-        win.webContents.openDevTools();
-        // entry.webContents.openDevTools();
+        main.webContents.openDevTools();
+        entry.webContents.openDevTools();
         require('electron-reload')(__dirname, {
             electron: require(__dirname + "/node_modules/electron")
         });
         entry.loadURL('http://localhost:4200/');
-        win.loadURL('http://localhost:4200/home');
+        main.loadURL('http://localhost:4200/home');
     }
     else {
-        win.loadURL(url.format({
+        main.loadURL(url.format({
             pathname: path.join(__dirname, 'dist/index.html'),
             protocol: 'file:',
             slashes: true
@@ -51,12 +51,12 @@ function createWindows() {
     }
     electron_1.ipcMain.handle('auth', function (event, arg) {
         if (arg == 200) {
-            win.show();
-            entry.hide();
+            main.show();
+            entry.close();
         }
         ;
         if (arg == 400) {
-            win.hide();
+            main.hide();
             entry.show();
         }
     });

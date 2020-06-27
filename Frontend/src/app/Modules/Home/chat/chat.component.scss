@@ -10,7 +10,7 @@
   padding: 30px;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow-y: scroll;
   scroll-behavior: smooth;
   
   message:nth-child(1) {

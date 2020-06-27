@@ -11,35 +11,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
-  constructor(
-    public electronService: ElectronService,
-    private router: Router
-  ) {
+  constructor(public electronService: ElectronService) {
+
     console.log('AppConfig', AppConfig);
 
     if (electronService.isElectron) {
+      console.groupCollapsed('Electron Environments')
       console.log(process.env);
-      console.log('Mode electron');
       console.log('Electron ipcRenderer', electronService.ipcRenderer);
       console.log('NodeJS childProcess', electronService.childProcess);
+      console.groupEnd();
     } else {
       console.log('Mode web');
     }
   }
 
-  // Print all path helper
-  printpath(parent: String, config: any) {
-    for (let i = 0; i < config.length; i++) {
-      const route = config[i];
-      console.log(parent + '/' + route.path);
-      if (route.children) {
-        const currentPath = route.path ? parent + '/' + route.path : parent;
-        this.printpath(currentPath, route.children);
-      }
-    }
-  }
+
+
   ngAfterViewInit() {
     Feather.replace();
-    // this.printpath('', this.router.config);
   }
 }

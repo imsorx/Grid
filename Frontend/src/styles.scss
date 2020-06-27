@@ -1,6 +1,6 @@
 :root {
   --bg-color: hsl(0, 0%, 10%);
-  --bg-dark: hsla(0, 0%, 0%, 0.2);
+  --bg-dark: hsl(0, 0%, 8%);
   --bg-light: hsla(0, 0%, 100%, 0.05);
   --fg-color: hsla(0, 0%, 100%, 0.9);
   --fg-light: hsla(0, 0%, 100%, 0.5);
@@ -29,6 +29,12 @@
   --asst: hsl(142, 70%, 60%);
   --selection: hsl(200, 90%, 70%);
   -webkit-text-stroke: 0.28px;
+  .error{
+    -webkit-text-stroke: 0;
+  }
+}
+.light .chat-wrapper::after{
+  opacity:0.01;
 }
 
 * {
@@ -52,10 +58,12 @@ body {
   position: relative;
 }
 
+//Text Selection style
 ::selection {
   background: var(--selection);
 }
 
+//Scrollbar styles
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;
@@ -71,6 +79,8 @@ body {
   background: var(--asst);
 }
 
+
+//Loader's Styles
 .loader {
   display: block;
   width: 100%;

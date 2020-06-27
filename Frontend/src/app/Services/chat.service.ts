@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs';
-import { CoreService } from './core.service';
+import { httpService } from './http.service';
 
 
 @Injectable()
@@ -26,10 +26,10 @@ export class ChatService {
         }
     ]
 
-    constructor(private route: ActivatedRoute, private core: CoreService) {
+    constructor(private route: ActivatedRoute, private httpService:httpService) {
         this.user$ = new Observable(observer => {
             this.route.params.subscribe(params => {
-                let user: User = this.core.user(params['id']);
+                let user: User = this.httpService.user(params['id']);
                 observer.next(user);
             })
         })

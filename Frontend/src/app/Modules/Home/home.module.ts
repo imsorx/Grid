@@ -13,6 +13,8 @@ import { MessageComponent } from './chat/message/message.component';
 import { SendboxComponent } from './chat/sendbox/sendbox.component';
 
 import { HomeRoutingModule } from './home-routing.module';
+import { ChatService } from '../../Services/chat.service';
+import { CoreService } from '../../Services/core.service';
 
 @NgModule({
     declarations: [
@@ -30,7 +32,7 @@ import { HomeRoutingModule } from './home-routing.module';
         HomeRoutingModule,
         FormsModule
     ],
-    providers: [],
+    providers: [ChatService,CoreService],
     exports: [
         FormsModule,
         HomeComponent

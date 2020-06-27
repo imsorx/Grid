@@ -1,57 +1,19 @@
-import { Injectable } from '@angular/core'
-import { Observable,Observer } from 'rxjs'
+import { Injectable } from '@angular/core';
 
 
-@Injectable(
-    {
-        providedIn: "root"
-    }
-)
+@Injectable()
 
 export class CoreService {
+    private currentUser: User_details;
 
-    users$: Observable<object>;
-    usersList: User[] = [
-        {
-            id: 1,
-            name: 'Thomas Shelby',
-            lstMsg: 'By the order of Peaky Blinders!',
-            img: 'assets/thomas.jpg'
-        },
-        {
-            id: 2,
-            name: 'Heisenberg',
-            lstMsg: 'Say my NAME!',
-            img: 'assets/heisenberg.jpg'
-        },
-        {
-            id: 3,
-            name: 'John Snow',
-            lstMsg: 'The Winter is Coming!',
-            img: 'assets/jon.jpg'
-        }
-    ]
-
-    constructor() {
-        this.users$ = Observable.create((observer: Observer<User>) => {
-            this.usersList.forEach(user => observer.next(user));
-        });
+    constructor() { 
+        this.currentUser = JSON.parse(localStorage.getItem('user'));
     }
 
-    public get users(): Observable<object> {
-        return this.users$;
+    public get user() {
+        return this.currentUser;
     }
-
-    user(id: number): User {
-        let user: User;
-        this.usersList.filter(x => {
-            if (x.id == id) {
-                user = x;
-            }
-        })
-        return user;
+    onDestroy() {
+        this.currentUser = null
     }
-
-
-
 }

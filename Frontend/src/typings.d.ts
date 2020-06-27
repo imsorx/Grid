@@ -7,14 +7,22 @@ interface Window {
   process: any;
   require: any;
 }
-interface User{
-  id:number,
-  name:string,
-  lstMsg:string,
-  img:string
+interface User {
+  id: number,
+  name: string,
+  lstMsg: string,
+  img: string
 }
-
-interface Message{
-  own:boolean,
-  data:string
+interface User_details {
+  token:string,
+  _id: string,
+  img: string,
+  name: string,
+  mail: string,
+  convers: string[],
+  channels: string[],
+}
+interface Message {
+  own: boolean,
+  data: string
 }

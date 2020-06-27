@@ -2,7 +2,7 @@ import { app, BrowserWindow, screen, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
-let win: BrowserWindow = null;
+let main: BrowserWindow = null;
 let entry: BrowserWindow = null;
 const args = process.argv.slice(1),
   serve = args.some(val => val === '--serve');
@@ -11,9 +11,21 @@ function createWindows(): BrowserWindow {
 
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
-
+  
+  //Create the Entry window
+  entry = new BrowserWindow({
+    height: 350,
+    width: 350,
+    frame: false,
+    resizable:false,
+    webPreferences: {
+      nodeIntegration: true,
+      allowRunningInsecureContent: (serve) ? true : false,
+    }
+  })
   // Create the Main window.
-  win = new BrowserWindow({
+  main = new BrowserWindow({
+    parent: entry,
     minWidth: size.width * 0.8,
     minHeight: size.height * 0.8,
     frame: false,
@@ -23,31 +35,19 @@ function createWindows(): BrowserWindow {
     },
     show: false
   });
-  //Create the Entry window
-  entry = new BrowserWindow({
-    parent: win,
-    height: 400,
-    width: 400,
-    frame: false,
-    resizable:false,
-    webPreferences: {
-      nodeIntegration: true,
-      allowRunningInsecureContent: (serve) ? true : false,
-    }
-  })
   if (serve) {
 
     // require('devtron').install();
-    win.webContents.openDevTools();
-    // entry.webContents.openDevTools();
+    main.webContents.openDevTools();
+    entry.webContents.openDevTools();
 
     require('electron-reload')(__dirname, {
       electron: require(`${__dirname}/node_modules/electron`)
     });
     entry.loadURL('http://localhost:4200/')
-    win.loadURL('http://localhost:4200/home');
+    main.loadURL('http://localhost:4200/home');
   } else {
-    win.loadURL(url.format({
+    main.loadURL(url.format({
       pathname: path.join(__dirname, 'dist/index.html'),
       protocol: 'file:',
       slashes: true
@@ -56,24 +56,24 @@ function createWindows(): BrowserWindow {
 
   ipcMain.handle('auth', (event, arg) => {
     if (arg == 200) {
-      win.show();
+      main.show();
       entry.hide();
     };
     if (arg == 400) {
-      win.hide();
+      main.hide();
       entry.show();
     }
   })
 
   // Emitted when the window is closed.
-  win.on('closed', () => {
+  entry.on('closed', () => {
     // Dereference the window object, usually you would store window
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    win = null;
+    entry = null;
   });
 
-  return win;
+  return entry;
 }
 
 try {
@@ -98,7 +98,7 @@ try {
   app.on('activate', () => {
     // On OS X it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
-    if (win === null) {
+    if (entry === null) {
       createWindows();
     }
   });

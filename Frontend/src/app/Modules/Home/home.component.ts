@@ -25,8 +25,23 @@ import * as Feather from 'feather-icons';
         grid-column: 3/5;
         height:100%;
         min-height: 0;
+        position:relative;
+        z-index:10;
       }
-    `],
+      .chat-wrapper::after{
+        content:'';
+        position:absolute;
+        top:80%;
+        left:50%;
+        height:60%;
+        width: 60%;
+        transform:translate(-50%,-50%);
+        background:url('assets/chat_bg.svg') no-repeat;
+        background-size:contain;
+        opacity:0.15;
+        z-index:-1;
+      }
+      `],
 })
 
 

@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 //Modules
 import { SharedModule } from './Common/shared.module';
 import { EntryModule } from './Modules/Entry/entry.module';
-import { HomeModule } from './Modules/Home/home.module';
 import { SettingsModule } from './Modules/settings/settings.module';
 
 //Route
@@ -32,7 +31,6 @@ import { AppComponent } from './app.component';
     SharedModule,
     AppRoutingModule,
     EntryModule,
-    HomeModule,
     SettingsModule,
   ],
   providers: [],
