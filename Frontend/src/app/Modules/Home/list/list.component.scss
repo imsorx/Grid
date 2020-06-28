@@ -48,7 +48,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  overflow-y: scroll;
+  overflow-y: auto;
   user {
     transition: all 200ms;
     outline: none;

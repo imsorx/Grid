@@ -54,6 +54,7 @@ export class httpService {
     }
 
     public login(details: { mail: string, pwd: string }): Observable<object> {
+        console.log(details);
         return this.http.post('http://localhost:4040/login', { mail: details.mail, pwd: details.pwd });
     }
 }
