@@ -4,7 +4,7 @@ var electron_1 = require("electron");
 var window_1 = require("./window");
 var path = require("path");
 var url = require("url");
-var args = process.argv.slice(1), serve = args.some(function (val) { return val === '--serve'; });
+var serve = process.argv.slice(1).some(function (val) { return val === '--serve'; });
 var grid;
 function main() {
     if (serve) {

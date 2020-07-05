@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { httpService } from './http.service';
 
 
@@ -8,7 +8,7 @@ import { httpService } from './http.service';
 
 export class ChatService {
 
-    user$: Observable<User>;
+    user$: Subject<User> = new Subject();
     messages$: Observable<Message>;
 
     dummy = [
@@ -26,18 +26,17 @@ export class ChatService {
         }
     ]
 
-    constructor(private route: ActivatedRoute, private httpService:httpService) {
-        this.user$ = new Observable(observer => {
-            this.route.params.subscribe(params => {
-                let user: User = this.httpService.user(params['id']);
-                observer.next(user);
-            })
+    constructor(private route: ActivatedRoute, private httpService: httpService) {
+        this.route.params.subscribe(params => {
+            this.httpService.user(params['id']).subscribe((u: User) => {
+                this.user$.next(u);
+            });
         })
         this.messages$ = new Observable(observer => this.dummy.forEach(m => observer.next(m)));
     }
 
 
-    public get user(): Observable<User> {
+    public get user(): Subject<User> {
         return this.user$;
     }
 

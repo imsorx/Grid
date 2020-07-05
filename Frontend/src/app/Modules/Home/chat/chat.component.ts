@@ -15,8 +15,8 @@ export class ChatComponent implements AfterViewInit, OnInit {
     messages: Message[] = [];
 
     constructor(private chatService: ChatService) { }
-    
-    
+
+
     ngOnInit() {
         this.chatService.user.subscribe(u => this.user = u);
         this.chatService.messages$.subscribe(m => this.messages.push(m));

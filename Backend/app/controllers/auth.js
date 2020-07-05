@@ -11,15 +11,20 @@ async function login(mail, pwd) {
     }
     try {
         let verify = await hash.check(pwd, user.pwd);
-        let token = tokenizer({ id: user._id, mail: user.mail });
-        return {
-            token: token,
-            _id: user._id,
-            img: user.img,
-            name: user.name,
-            mail: user.mail,
-            convers: user.convers,
-            channels: user.channels
+        if (verify) {
+            let token = tokenizer({ id: user._id, mail: user.mail });
+            return {
+                token: token,
+                _id: user._id,
+                img: user.img,
+                name: user.name,
+                mail: user.mail,
+                convers: user.convers,
+                channels: user.channels
+            }
+        }
+        else {
+            throw new Error('Incorret Password');
         }
     } catch (err) {
         throw err;

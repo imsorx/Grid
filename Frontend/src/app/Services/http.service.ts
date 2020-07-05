@@ -1,60 +1,34 @@
 import { Injectable } from '@angular/core'
-import { Observable, Observer } from 'rxjs'
+import { Observable } from 'rxjs'
+import { } from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http';
+import { AppConfig } from '../../environments/environment.dev';
 
 
-@Injectable(
-    {
-        providedIn: "root"
-    }
-)
+@Injectable({ providedIn: "root" })
+
+
 export class httpService {
-    userStore$: Observable<User>;
-    userStore: User[] = [
-        {
-            id: 1,
-            name: 'Thomas Shelby',
-            lstMsg: 'By the order of Peaky Blinders!',
-            img: 'assets/thomas.jpg'
-        },
-        {
-            id: 2,
-            name: 'Heisenberg',
-            lstMsg: 'Say my NAME!',
-            img: 'assets/heisenberg.jpg'
-        },
-        {
-            id: 3,
-            name: 'John Snow',
-            lstMsg: 'The Winter is Coming!',
-            img: 'assets/jon.jpg'
-        }
-    ]
+
+    API: string
+    _token: string;
 
     constructor(private http: HttpClient) {
-
+        this._token = JSON.parse(localStorage.getItem('user')).token;
+        this.API = AppConfig.API
     }
 
-
-    public user(id: number): User {
-        let user: User;
-        this.userStore.filter(x => {
-            if (x.id == id) {
-                user = x;
-            }
-        })
-        return user;
+    public user(id: string): Observable<User> {
+        return this.http.get<User>(`${this.API}/users/${id}`, {
+            headers: { Authorization: `Bearer ${this._token}` },
+        });
     }
 
-    public get users(): Observable<User> {
-        this.userStore$ = Observable.create((observer: Observer<User>) => {
-            this.userStore.forEach(u => observer.next(u));
-        })
-        return this.userStore$;
+    public get users(): Observable<User[]> {
+        return this.http.get<User[]>(`${this.API}/users`, { headers: { Authorization: `Bearer ${this._token}` } });
     }
 
-    public login(details: { mail: string, pwd: string }): Observable<object> {
-        console.log(details);
-        return this.http.post('http://localhost:4040/login', { mail: details.mail, pwd: details.pwd });
+    public login(details: { mail: string, pwd: string }): Observable<User_details> {
+        return this.http.post<User_details>(`${this.API}/login`, { mail: details.mail, pwd: details.pwd });
     }
 }

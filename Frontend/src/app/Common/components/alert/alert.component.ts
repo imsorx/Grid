@@ -1,33 +1,52 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'alert',
-    template: `<div class="wrapper">
-    <p class="msg">
-    {{data}}
-    <i data-feather="x" class="icon"></i>
-    </p>
-    </div>`,
+    selector: 'alert-template',
+    template: `<div class="error">{{data}} Span
+                <span class="close" (click)="isFail = !isFail">x</span>
+               </div>`,
     styles: [
-        `.wrapper{
-            display:inline-block;
-            align-items:center;
-            border-radius:16px;
-            background:red;
-            padding:4px 8px;
-        }`,
-        `.icon{
-            display: inline-block;
-            height: 14px;
-            margin: auto 0;
+        `.error {
+            position: absolute;
+            display: flex;
+            align-items: flex-start;
+            bottom: 0;
+            left: 50%;
+            width: 80%;
+            color: #eee;
+            padding: 4px 4px 4px 8px;
+            border-radius: 12px;
+            background-color: hsl(7, 90%, 45%);
+            animation: push .2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            z-index: 5;
+            .close{
+              margin-left: auto;
+              color: hsl(348, 100%, 50%);
+              font-weight: 700;
+              padding: 0 4px;
+              background: #eee;
+              border-radius: 50%;
+              cursor: pointer;
+            }
+          }
+          
+          @keyframes push {
+            from{
+              opacity: 0;
+              transform: translate(-50%,40%);
+            }
+            to {
+              opacity: 1;
+              transform: translate(-50%,-50%);
+            }
         }`
     ]
 })
 
 export class AlertComopnent {
 
-    @Input() type:string;
-    @Input() data:string = 'Error: Server not available';
+    type: string;
+    data: string = 'Error: Server not available';
 
     constructor() { }
 }

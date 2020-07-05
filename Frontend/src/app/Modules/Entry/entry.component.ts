@@ -22,11 +22,10 @@ export class EntryComponent implements OnInit {
     submit(f: NgForm): void {
         this.http.login(f.value).subscribe(
             (res: User_details) => {
-                // this.electron.ipcRenderer.invoke('auth', 200);
+                this.electron.ipcRenderer.invoke('auth', 200);
                 localStorage.setItem('user', JSON.stringify(res))
-                console.log(JSON.stringify(res))
             }, (err) => {
-                this.displayError(err.message);
+                this.displayError(err.error);
             });
     }
 

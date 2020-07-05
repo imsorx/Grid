@@ -12,6 +12,8 @@ export class ListComponent implements OnInit {
     constructor(private httpService: httpService) { }
 
     ngOnInit() {
-        this.httpService.users.subscribe(user => { this.users.push(user) });
+        this.httpService.users.subscribe((users: User[]) => users.forEach(user => {
+            this.users.push(user)
+        }));
     }
 }

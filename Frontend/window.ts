@@ -5,7 +5,7 @@ const entryCofig = {
     height: 350,
     width: 350,
     frame: false,
-    // resizable: false,
+    resizable: false,
     show: false,
     icon:'/src/assets/icons/favicon.ico'
 }

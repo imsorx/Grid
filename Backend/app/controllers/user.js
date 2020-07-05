@@ -3,9 +3,9 @@ const log = require("../utils/logger");
 
 let serverError = new Error("Internal Server Error");
 
-async function allUsers() {
+function allUsers() {
   try {
-    let users = await User.find().select("_id img name mail").exec();
+    let users = User.find().select("_id img name mail").exec();
     return users;
   } catch (err) {
     log.error(err);
@@ -13,9 +13,9 @@ async function allUsers() {
   }
 }
 
-async function getbyID(id) {
+function getbyID(id) {
   try {
-    let user = await User.findOne({ _id: id })
+    let user = User.findOne({ _id: id })
       .select("_id img name mail")
       .exec();
     return user;
@@ -53,9 +53,10 @@ module.exports = {
       return res.status(500).json({ error: err.message });
     }
   },
-  byId: (req, res) => {
+  byId: async (req, res) => {
     try {
-      return res.status(200).json(getbyID(req.params.id));
+      let user = await getbyID(req.params.id);
+      return res.status(200).json(user);
     } catch (err) {
       return res.status(500).json({ error: err.message });
     }

@@ -4,8 +4,7 @@ import * as path from 'path';
 import * as url from 'url';
 
 
-const args = process.argv.slice(1),
-  serve = args.some(val => val === '--serve');
+const serve = process.argv.slice(1).some(val => val === '--serve');
 let grid: CreateWindow;
 
 function main() {

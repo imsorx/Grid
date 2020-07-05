@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TitlebarComponent,AlertComopnent } from './components';
-import { WebviewDirective } from './directives';
+import { WebviewDirective, LoadImgDirective } from './directives';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
+    LoadImgDirective,
     WebviewDirective,
     TitlebarComponent,
     AlertComopnent
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule],
   exports: [
     WebviewDirective,
+    LoadImgDirective,
     FormsModule,
     TitlebarComponent,
     AlertComopnent

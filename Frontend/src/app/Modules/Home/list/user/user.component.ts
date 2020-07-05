@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core'
+import * as url from 'url';
 
 
 @Component({
@@ -13,5 +14,7 @@ export class UserComponent implements OnInit {
     @Input() img: string;
     constructor() {
     }
-    ngOnInit() { }
+    ngOnInit() {
+
+    }
 }

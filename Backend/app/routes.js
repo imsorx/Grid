@@ -9,13 +9,13 @@ const fileUpload = require('./middlewares/files');
 router.post("/login", auth.login);
 router.post("/signup", auth.signup);
 
-router.get('/users', verify, users.all);
 router.get('/users/:id', verify, users.byId);
+router.get('/users', verify, users.all);
 router.patch('/users/', verify, avataUpload, users.update);
 router.delete('/users/:id', verify, users.delete);
 
 router.post('/uploads', verify, fileUpload, (req, res) => { res.send(req.files) });
-router.get('/uploads/avatar/:id?', verify, (req, res) => req.params.id ? res.sendFile(__dirname + `/uploads/avatars/${req.params.id}`) : res.sendFile(__dirname + `/uploads/avatars/default.jpg`))
+router.get('/uploads/avatar/:id?', (req, res) => req.params.id ? res.sendFile(__dirname + `/uploads/avatars/${req.params.id}`) : res.sendFile(__dirname + `/uploads/avatars/default.jpg`))
 router.get('/uploads/:name', verify, (req, res) => res.sendFile(__dirname + `/uploads/files/${req.params.name}`))
 
 router.use(express.static(__dirname + '/app/static/'));

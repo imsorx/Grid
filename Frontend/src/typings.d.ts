@@ -8,10 +8,10 @@ interface Window {
   require: any;
 }
 interface User {
-  id: number,
-  name: string,
-  lstMsg: string,
+  _id: number,
   img: string
+  name: string,
+  mail: string,
 }
 interface User_details {
   token:string,
