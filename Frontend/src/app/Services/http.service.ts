@@ -14,8 +14,11 @@ export class httpService {
     _token: string;
 
     constructor(private http: HttpClient) {
-        this._token = JSON.parse(localStorage.getItem('user')).token;
         this.API = AppConfig.API
+    }
+
+    public set token(token: string) {
+        this._token = token;
     }
 
     public user(id: string): Observable<User> {
@@ -31,4 +34,5 @@ export class httpService {
     public login(details: { mail: string, pwd: string }): Observable<User_details> {
         return this.http.post<User_details>(`${this.API}/login`, { mail: details.mail, pwd: details.pwd });
     }
+
 }
