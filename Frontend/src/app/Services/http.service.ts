@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
-import { } from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../../environments/environment.dev';
 
@@ -10,25 +9,18 @@ import { AppConfig } from '../../environments/environment.dev';
 
 export class httpService {
 
-    API: string
-    _token: string;
+    API: string;
 
     constructor(private http: HttpClient) {
         this.API = AppConfig.API
     }
 
-    public set token(token: string) {
-        this._token = token;
-    }
-
     public user(id: string): Observable<User> {
-        return this.http.get<User>(`${this.API}/users/${id}`, {
-            headers: { Authorization: `Bearer ${this._token}` },
-        });
+        return this.http.get<User>(`${this.API}/users/${id}`);
     }
 
     public get users(): Observable<User[]> {
-        return this.http.get<User[]>(`${this.API}/users`, { headers: { Authorization: `Bearer ${this._token}` } });
+        return this.http.get<User[]>(`${this.API}/users`);
     }
 
     public login(details: { mail: string, pwd: string }): Observable<User_details> {

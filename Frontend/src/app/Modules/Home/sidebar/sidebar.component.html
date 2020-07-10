@@ -1,5 +1,5 @@
 <div class="profile">
-  <img [loadImg]="currentUser.img" alt="John Doe" />
+  <img [src]="currentUser.img" alt="John Doe" />
   <p class="title">{{currentUser.name}}</p>
   <div class="subtitle" [ngClass]="{active : viewMore}">
     <p>{{currentUser.mail}}</p>

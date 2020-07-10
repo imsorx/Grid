@@ -25,6 +25,7 @@ export class EntryComponent implements OnInit {
                 this.electron.ipcRenderer.invoke('auth', 200);
                 localStorage.setItem('user', JSON.stringify(res))
             }, (err) => {
+                console.log(err)
                 this.displayError(err.error);
             });
     }

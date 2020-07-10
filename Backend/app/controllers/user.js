@@ -1,5 +1,7 @@
 const User = require("../models/user");
 const log = require("../utils/logger");
+var path = require("path");
+var url = require("url");
 
 let serverError = new Error("Internal Server Error");
 
@@ -18,6 +20,11 @@ function getbyID(id) {
     let user = User.findOne({ _id: id })
       .select("_id img name mail")
       .exec();
+    // user.img = url.format({
+    //   pathname: path.join(__dirname, user.img),
+    //   protocol: 'http://',
+    //   slashes: true
+    // });
     return user;
   } catch (err) {
     log.error(err);

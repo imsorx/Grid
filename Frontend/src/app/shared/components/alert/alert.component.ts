@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'alert-template',
-    template: `<div class="error">{{data}} Span
+    selector: 'alert-toast',
+    template: `<div class="error">{{data}}
                 <span class="close" (click)="isFail = !isFail">x</span>
                </div>`,
     styles: [

@@ -5,7 +5,6 @@ import { httpService } from './http.service';
 
 
 @Injectable()
-
 export class ChatService {
 
     user$: Subject<User> = new Subject();
@@ -34,7 +33,6 @@ export class ChatService {
         })
         this.messages$ = new Observable(observer => this.dummy.forEach(m => observer.next(m)));
     }
-
 
     public get user(): Subject<User> {
         return this.user$;

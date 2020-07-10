@@ -6,8 +6,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { httpInterceptorProviders } from './interceptors/index';
 //Modules
-import { SharedModule } from './Common/shared.module';
+import { SharedModule } from './shared/shared.module';
 import { EntryModule } from './Modules/Entry/entry.module';
 import { SettingsModule } from './Modules/settings/settings.module';
 
@@ -33,7 +34,7 @@ import { AppComponent } from './app.component';
     EntryModule,
     SettingsModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
