@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const config = require('../config.json');
 
-const AVATAR = `${config.storage.basePath, config.storage.avatarPath, 'default.png'}`;
+const AVATAR = config.storage.basePath + config.storage.avatarPath + '/default.png';
 
 const userSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
