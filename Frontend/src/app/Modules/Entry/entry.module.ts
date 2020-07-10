@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { EntryComponent } from './entry.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
     EntryComponent
   ],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SharedModule],
   exports: [
     FormsModule,
     EntryComponent
