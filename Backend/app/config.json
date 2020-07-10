@@ -12,7 +12,7 @@
     },
     "storage":{
         "basePath":"/uploads",
-        "avatarPath":"/avatars",
+        "avatarPath":"/avatar",
         "filesPath":"/files"
     },
     "JWT_KEY":"secret",
