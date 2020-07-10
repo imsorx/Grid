@@ -9,7 +9,6 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 export class ToastComponent implements OnInit {
     @Input() toastType: string;
     @Input() toastContent: string;
-    @Input() showToast: boolean;
     @Output() dismissed = new EventEmitter();
 
     dismissToast(): void {
