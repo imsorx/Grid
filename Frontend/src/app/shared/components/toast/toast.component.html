@@ -1,0 +1,3 @@
+<div *ngIf="toastContent" class="toast" [ngClass]="{'error': toastType === 'error', 'notice': toastType === 'notice', 'success': toastType === 'success'}">{{ toastContent }}
+      <span class="close" [ngClass]="{'close-error': toastType === 'error', 'close-notice': toastType === 'notice', 'close-success': toastType === 'success'}" (click)="dismissToast()">x</span>
+</div>

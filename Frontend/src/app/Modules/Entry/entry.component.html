@@ -21,8 +21,6 @@
         sign up
       </div>
     </div>
-    <div *ngIf="isFail" class="error">{{errMessage}} 
-      <span class="close" (click)="isFail = !isFail">x</span>
-    </div>
   </form>
+  <toast (dismissed)="dismissToast()" [toastContent]="toastContent" [toastType]="toastType"></toast>
 </div>

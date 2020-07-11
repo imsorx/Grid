@@ -12,31 +12,36 @@ import { NgForm } from '@angular/forms';
 
 
 export class EntryComponent implements OnInit {
+    toastContent: string;
+    toastType: string;
 
-    errMessage: string;
-    isFail: boolean = false;
     constructor(
         private electron: ElectronService,
         private http: httpService) { }
 
     submit(f: NgForm): void {
-        this.http.login(f.value).subscribe(
-            (res: User_details) => {
-                this.electron.ipcRenderer.invoke('auth', 200);
-                localStorage.setItem('user', JSON.stringify(res))
-            }, (err) => {
-                console.log(err)
-                this.displayError(err.error);
-            });
+      this.http.login(f.value).subscribe(
+          (res: User_details) => {
+              this.electron.ipcRenderer.invoke('auth', 200);
+              localStorage.setItem('user', JSON.stringify(res))
+          }, (err) => {
+              console.log(err)
+              this.displayError(err.error);
+          });
     }
 
     signup(): void {
-        this.displayError('Not ye implemented');
+        this.displayError('Dis message so cool');
     }
 
     displayError(message: string): void {
-        this.errMessage = message;
-        this.isFail = !this.isFail;
+        this.toastContent = message;
+        this.toastType = "error";
+    }
+
+    dismissToast(): void {
+        this.toastContent = ''
+        this.toastType = ''
     }
 
     ngOnInit() {

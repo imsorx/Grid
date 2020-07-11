@@ -1,0 +1,54 @@
+.toast {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  bottom: 0;
+  left: 50%;
+  width: 80%;
+  color: #eee;
+  padding: 4px 4px 4px 8px;
+  border-radius: 12px;
+  animation: push .2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  z-index: 5;
+  .close{
+    margin-left: auto;
+    font-weight: 700;
+    padding: 0 4px;
+    background: #eee;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.error {
+  background-color: hsl(7, 90%, 45%);
+}
+.close-error {
+  color: hsl(348, 100%, 50%);
+}
+
+.notice {
+  background-color: hsl(223, 100%, 56%);
+}
+.close-notice {
+  color: hsl(223, 100%, 56%);
+}
+
+.success {
+  background-color: var(--asst);
+}
+.close-success {
+  color: var(--asst);
+}
+
+
+  @keyframes push {
+    from{
+      opacity: 0;
+      transform: translate(-50%,40%);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%,-50%);
+    }
+}

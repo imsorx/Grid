@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TitlebarComponent,AlertComopnent } from './components';
+import { TitlebarComponent, ToastComponent } from './components';
 import { WebviewDirective, LoadImgDirective } from './directives';
 import { FormsModule } from '@angular/forms';
 
@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
     LoadImgDirective,
     WebviewDirective,
     TitlebarComponent,
-    AlertComopnent
+    ToastComponent
   ],
   imports: [CommonModule, FormsModule],
   exports: [
@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
     LoadImgDirective,
     FormsModule,
     TitlebarComponent,
-    AlertComopnent
+    ToastComponent
   ]
 })
 export class SharedModule { }
