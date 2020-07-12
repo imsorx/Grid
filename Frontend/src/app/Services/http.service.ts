@@ -26,5 +26,8 @@ export class httpService {
     public login(details: { mail: string, pwd: string }): Observable<User_details> {
         return this.http.post<User_details>(`${this.API}/login`, { mail: details.mail, pwd: details.pwd });
     }
+    public signup(details: { mail: string, pwd: string }): Observable<string> {
+        return this.http.post<string>(`${this.API}/signup`, { name: details.mail, mail: details.mail, pwd: details.pwd });
+    }
 
 }

@@ -3,13 +3,7 @@
   <i data-feather="search" class="icon"></i>
 </div>
 
-<div class="wrapper">
-  <user
-    *ngFor="let user of users"
-    [name]="user.name"
-    [msg]="user.mail"
-    [img]="user.img"
-    [routerLink]="['chat', user._id]"
-    routerLinkActive="active"
-  ></user>
+<div *ngFor="let user of users" class="wrapper">
+  <user *ngIf="user._id != id" [name]="user.name" [msg]="user.mail" [img]="user.img"
+    [routerLink]="['chat', user._id]" routerLinkActive="active"></user>
 </div>

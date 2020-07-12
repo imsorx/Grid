@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Feather from 'feather-icons';
-import { Router } from '@angular/router';
+import { GlobalService } from '../../../services/global.service';
 
 @Component({
     selector: 'settings',
@@ -9,10 +9,14 @@ import { Router } from '@angular/router';
 })
 
 export class SettingsComponent implements OnInit {
-    constructor(private router: Router) { }
-    toHome(): void {
-        this.router.navigate(['/home']);
+
+    constructor(private global: GlobalService) {
     }
+
+    close() {
+        this.global.toggleSettings(false);
+    }
+
     ngOnInit() {
         Feather.replace()
     }

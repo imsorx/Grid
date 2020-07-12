@@ -6,11 +6,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+//Providers
 import { httpInterceptorProviders } from './interceptors/index';
+import { GlobalService } from './services/global.service';
+
 //Modules
 import { SharedModule } from './shared/shared.module';
 import { EntryModule } from './Modules/Entry/entry.module';
-import { SettingsModule } from './Modules/settings/settings.module';
 
 //Route
 import { AppRoutingModule } from './app-routing.module';
@@ -32,9 +34,8 @@ import { AppComponent } from './app.component';
     SharedModule,
     AppRoutingModule,
     EntryModule,
-    SettingsModule,
   ],
-  providers: [httpInterceptorProviders],
+  providers: [GlobalService, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

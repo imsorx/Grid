@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ElectronService } from '../../../Services/electron.service';
 import { CoreService } from '../../../Services/core.service';
-import { Router } from '@angular/router';
+import { GlobalService } from '../../../services/global.service';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
 
     constructor(
         private electron: ElectronService,
-        private router: Router,
+        private global: GlobalService,
         private core: CoreService) {
     }
 
@@ -26,7 +26,7 @@ export class SidebarComponent implements OnInit {
     }
 
     toSettings(): void {
-        this.router.navigate(['settings']);
+        this.global.toggleSettings(true);
     }
 
     toggleviewMore() {

@@ -25,13 +25,18 @@ export class EntryComponent implements OnInit {
                 this.electron.ipcRenderer.invoke('auth', 200);
                 localStorage.setItem('user', JSON.stringify(res))
             }, (err) => {
-                console.log(err)
                 this.displayError(err.error);
             });
     }
 
-    signup(): void {
-        this.displayError('Not ye implemented');
+    signup(f: NgForm): void {
+        this.http.signup(f.value).subscribe(
+            (res: string) => {
+                console.log(res);
+            },
+            (err) => {
+                this.displayError(err.error)
+            });
     }
 
     displayError(message: string): void {
