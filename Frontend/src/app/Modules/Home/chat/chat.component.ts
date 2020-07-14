@@ -11,13 +11,18 @@ import { ChatService } from '../../../Services/chat.service';
 
 export class ChatComponent implements AfterViewInit, OnInit {
 
-    user: User;
+    user: User = {
+        _id: null,
+        img: '',
+        name: '',
+        mail: ''
+    };
     messages: Message[] = [];
 
     constructor(private chatService: ChatService) {
     }
-    
-    
+
+
     ngOnInit() {
         this.chatService.user.subscribe(u => this.user = u);
         this.chatService.messages$.subscribe(m => this.messages.push(m));

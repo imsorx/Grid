@@ -29,6 +29,16 @@ export class SidebarComponent implements OnInit {
         this.global.toggleSettings(true);
     }
 
+    throwError(){
+        this.global.newToast('error','Not yet implemented!');
+    }
+    throwWarn(){
+        this.global.newToast('warn','Join illumunati first!')
+    }
+    throwSuccess(){
+        this.global.newToast('success','Already Opened!')
+    }
+
     toggleviewMore() {
         this.viewMore = !this.viewMore;
     }

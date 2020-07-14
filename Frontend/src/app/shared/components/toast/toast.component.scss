@@ -1,0 +1,63 @@
+:host {
+  --err: hsl(348, 100%, 61%);
+  --warn: hsl(48, 100%, 67%);
+  --success: hsl(141, 53%, 53%);
+}
+
+.wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  margin: 30px 0 20px 0;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: stretch;
+  z-index: 20;
+}
+
+.toast {
+  width: 80%;
+  max-width: 400px;
+  margin: 2px auto;
+  display: flex;
+  color: #fff;
+  padding: 4px 4px 4px 8px;
+  border-radius: 12px;
+  animation: push 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  .close {
+    padding: 0 5px; 
+    border-radius: 20px;
+    margin-left: auto;
+    background: hsla(0,0,0,0.2);
+    cursor: pointer;
+  }
+}
+
+.error {
+  background-color: var(--err);
+}
+
+.warn {
+  background-color: var(--warn);
+  align-items: flex-start;
+  font-weight: 500;
+  color: hsla(0,0,0,0.7);
+  .close{
+    color: #fff;
+  }
+}
+
+.success {
+  background-color: var(--success);
+}
+
+@keyframes push {
+  from {
+    opacity: 0;
+    transform: translateY(40%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

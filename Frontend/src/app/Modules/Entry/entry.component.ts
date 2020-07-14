@@ -3,6 +3,7 @@ import { ElectronService } from '../../Services/electron.service';
 import * as Feather from 'feather-icons';
 import { httpService } from '../../Services/http.service';
 import { NgForm } from '@angular/forms';
+import { GlobalService } from '../../services/global.service';
 
 @Component({
     selector: 'entry',
@@ -13,10 +14,10 @@ import { NgForm } from '@angular/forms';
 
 export class EntryComponent implements OnInit {
 
-    errMessage: string;
-    isFail: boolean = false;
+
     constructor(
         private electron: ElectronService,
+        private global: GlobalService,
         private http: httpService) { }
 
     submit(f: NgForm): void {
@@ -25,24 +26,20 @@ export class EntryComponent implements OnInit {
                 this.electron.ipcRenderer.invoke('auth', 200);
                 localStorage.setItem('user', JSON.stringify(res))
             }, (err) => {
-                this.displayError(err.error);
+                this.global.newToast('error', err.error);
             });
     }
 
     signup(f: NgForm): void {
         this.http.signup(f.value).subscribe(
             (res: string) => {
-                console.log(res);
+                this.global.newToast('success', res);
             },
             (err) => {
-                this.displayError(err.error)
+                this.global.newToast('error', err.error)
             });
     }
 
-    displayError(message: string): void {
-        this.errMessage = message;
-        this.isFail = !this.isFail;
-    }
 
     ngOnInit() {
         Feather.replace();

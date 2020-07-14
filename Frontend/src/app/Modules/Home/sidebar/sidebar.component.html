@@ -10,13 +10,13 @@
   </div>
 </div>
 <ul class="items">
-  <li class="item ">
+  <li class="item " (click)="throwError()">
     <i data-feather="message-square" width="16px"></i>Conversations
   </li>
-  <li class="item">
+  <li class="item" (click)="throwWarn()">
     <i data-feather="grid" width="16px"></i>Channels
   </li>
-  <li class="item active">
+  <li class="item active" (click)="throwSuccess()">
     <i data-feather="users" width="16px"></i>Users
   </li>
   <li class="item" (click)="logout()">
