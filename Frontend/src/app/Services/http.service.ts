@@ -18,6 +18,9 @@ export class httpService {
     public user(id: string): Observable<User> {
         return this.http.get<User>(`${this.API}/users/${id}`);
     }
+    public updateUser(details: { _id: string, name: string, desig: string }) {
+        return this.http.patch(`${this.API}/users`, details)
+    }
 
     public get users(): Observable<User[]> {
         return this.http.get<User[]>(`${this.API}/users`);
@@ -28,6 +31,9 @@ export class httpService {
     }
     public signup(details: { mail: string, pwd: string }): Observable<string> {
         return this.http.post<string>(`${this.API}/signup`, { name: details.mail, mail: details.mail, pwd: details.pwd });
+    }
+    public deleteUser(){
+        return this.http.delete(`${this.API}/users/${JSON.parse(localStorage.getItem('user'))._id}`);
     }
 
 }

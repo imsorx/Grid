@@ -1,13 +1,16 @@
 <div class="profile">
   <img [src]="currentUser.img" alt="John Doe" />
-  <p class="title">{{currentUser.name}}</p>
-  <div class="subtitle" [ngClass]="{active : viewMore}">
-    <p>{{currentUser.mail}}</p>
-    <p>Professor - CSE</p>
+  <div class="details">
+    <p class="title">
+      {{currentUser.name}}
+      <span (click)="showProfile()"><i data-feather="edit" class="edit"></i></span>
+    </p>
+    <p class="status">
+      Active
+      <span><i data-feather="chevron-down" class="edit"></i></span>
+    </p>
   </div>
-  <div (click)="toggleviewMore()" [ngClass]="{rotate : viewMore}">
-    <i data-feather="chevron-down" class="toggle"></i>
-  </div>
+
 </div>
 <ul class="items">
   <li class="item " (click)="throwError()">

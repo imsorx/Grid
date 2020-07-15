@@ -20,25 +20,20 @@ function getbyID(id) {
     let user = User.findOne({ _id: id })
       .select("_id img name mail")
       .exec();
-    // user.img = url.format({
-    //   pathname: path.join(__dirname, user.img),
-    //   protocol: 'http://',
-    //   slashes: true
-    // });
     return user;
   } catch (err) {
     log.error(err);
     throw serverError;
   }
 }
-function update(id, userObj) {
-  User.findOneAndUpdate({ _id: id }, userObj, (err, doc) => {
-    if (doc) {
-      return;
-    }
-    log.error(err);
-    throw serverError;
-  });
+function update(userObj) {
+  try {
+    let updatedUser = User.findOneAndUpdate({ _id: userObj._id }, { name: userObj.name })
+      .select("_id img name").exec();
+    return updatedUser;
+  } catch (err) {
+    throw err;
+  }
 }
 function deleteUser(id) {
   User.deleteOne({ _id: id }, (err) => {
@@ -70,8 +65,8 @@ module.exports = {
   },
   update: (req, res) => {
     try {
-      update(req.body._id, req.body);
-      return res.sendStatus(200);
+      let _res = update(req.body);
+      return res.status(200).json(_res);
     } catch (err) {
       return res.status(500).json({ error: err.message });
     }
@@ -79,9 +74,9 @@ module.exports = {
   delete: (req, res) => {
     try {
       deleteUser(req.params.id);
-      return res.sendStatus(200);
+      return res.status(200).json({ message: 'Deleted!' });
     } catch (err) {
-      return res.status(500).json({ erro: err.message });
+      return res.status(500).json({ error: err.message });
     }
   },
   addPendings,

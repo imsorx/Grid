@@ -32,8 +32,8 @@ export class EntryComponent implements OnInit {
 
     signup(f: NgForm): void {
         this.http.signup(f.value).subscribe(
-            (res: string) => {
-                this.global.newToast('success', res);
+            (res: any) => {
+                this.global.newToast('success', res.message);
             },
             (err) => {
                 this.global.newToast('error', err.error)

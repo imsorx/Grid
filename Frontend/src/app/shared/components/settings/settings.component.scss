@@ -4,14 +4,22 @@
   width: 100%;
   height: 100%;
   background: var(--bg-dark);
-  z-index: 20;
+  z-index: 15;
   animation: reveal 200ms ease-out;
+}
+.container{
+  margin: 0 20px;
+  margin-top: 24px;
+  .heading{
+    color: var(--fg-light);
+  }
 }
 .wrapper {
   height: 100%;
   max-width: 700px;
   width: 80%;
-  margin: 20px auto;
+  margin: 0 auto;
+  margin-top: 24px;
   .btn {
     display: flex;
     width: 50px;
@@ -27,7 +35,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    margin: 0 12px;
     .item {
       display: flex;
       padding: 10px;
@@ -38,6 +46,22 @@
     }
   }
 }
+
+input[type="button"]{
+  padding: 4px 20px;
+  font-family: inherit;
+  font-size: inherit;
+  color: #fff;
+  background: hsl(348, 100%, 61%);
+  border: none;
+  border-bottom: 4px solid rgba($color: #000000, $alpha: 0.2);
+  outline: none;
+  border-radius: 4px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
 //Toggles
 input[type="checkbox"] + label {
   position: relative;

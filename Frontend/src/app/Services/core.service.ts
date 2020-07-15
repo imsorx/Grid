@@ -1,18 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
+import { httpService } from './http.service';
 
 @Injectable()
 
-export class CoreService {
-    private currentUser: User_details;
+export class CoreService implements OnDestroy {
 
-    constructor() {
+    public currentUser: User_details;
+    public users: User[] = [];
+
+    constructor(private httpService: httpService) {
+        
         this.currentUser = JSON.parse(localStorage.getItem('user'));
+        
+        this.httpService.users.subscribe((users: User[]) => users.forEach(user => {
+            this.users.push(user)
+        }));
     }
 
-    public get user() {
-        return this.currentUser;
-    }
-    onDestroy() {
+    ngOnDestroy() {
         this.currentUser = null
     }
 }

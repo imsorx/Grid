@@ -12,6 +12,7 @@ import { ChatComponent } from './chat/chat.component';
 import { TopbarComponent } from './chat/topbar/topbar.component';
 import { MessageComponent } from './chat/message/message.component';
 import { SendboxComponent } from './chat/sendbox/sendbox.component';
+import { ProfileComponet } from './profile/profile.component'
 
 import { HomeRoutingModule } from './home-routing.module';
 import { ChatService } from '../../Services/chat.service';
@@ -26,7 +27,8 @@ import { CoreService } from '../../Services/core.service';
         ChatComponent,
         TopbarComponent,
         MessageComponent,
-        SendboxComponent
+        SendboxComponent,
+        ProfileComponet
     ],
     imports: [
         CommonModule,
@@ -34,7 +36,7 @@ import { CoreService } from '../../Services/core.service';
         FormsModule,
         SharedModule
     ],
-    providers: [ChatService,CoreService],
+    providers: [ChatService, CoreService],
     exports: [
         FormsModule,
         HomeComponent

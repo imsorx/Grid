@@ -50,5 +50,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.global.showSettings.unsubscribe();
+    localStorage.clear();
   }
 }

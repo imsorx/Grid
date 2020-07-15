@@ -13,7 +13,6 @@ import { GlobalService } from '../../../services/global.service';
 export class SidebarComponent implements OnInit {
 
     currentUser: User_details;
-    viewMore = false;
 
     constructor(
         private electron: ElectronService,
@@ -29,20 +28,20 @@ export class SidebarComponent implements OnInit {
         this.global.toggleSettings(true);
     }
 
-    throwError(){
-        this.global.newToast('error','Not yet implemented!');
+    throwError() {
+        this.global.newToast('error', 'Not yet implemented!');
     }
-    throwWarn(){
-        this.global.newToast('warn','Join illumunati first!')
+    throwWarn() {
+        this.global.newToast('warn', 'Join illumunati first!')
     }
-    throwSuccess(){
-        this.global.newToast('success','Already Opened!')
+    throwSuccess() {
+        this.global.newToast('success', 'Already Opened!')
     }
 
-    toggleviewMore() {
-        this.viewMore = !this.viewMore;
+    showProfile() {
+        this.global.toggleProfile(true);
     }
     ngOnInit() {
-        this.currentUser = this.core.user;
+        this.currentUser = this.core.currentUser;
     }
 }

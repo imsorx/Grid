@@ -46,7 +46,7 @@ async function signup(name, mail, pwd) {
             });
             let savedUser = await user.save();
             log.info(`${mail} Created Succefully!`)
-            return;
+            return `${mail} Created Succefully!`;
         }
     } catch (err) {
         throw err;
@@ -63,7 +63,7 @@ module.exports = {
     signup: async function (req, res) {
         try {
             let response = await signup(req.body.name, req.body.mail, req.body.pwd);
-            return res.sendStatus(201);
+            return res.status(201).json({ message: response });
         } catch (err) {
             return res.status(409).send(err.message);
         }

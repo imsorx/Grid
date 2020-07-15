@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import * as Feather from 'feather-icons';
+import { GlobalService } from '../../services/global.service';
 
 @Component({
   selector: 'home',
-  template: '<sidebar></sidebar><list></list><div class="chat-wrapper"><router-outlet></router-outlet></div>',
+  template: '<sidebar></sidebar><list></list><div class="chat-wrapper"><router-outlet></router-outlet></div><profile *ngIf="showProfile"></profile>',
   styles: [`
     :host {
         display: grid;
-        grid-template-columns: minmax(200px, 200px) minmax(200px, 250px) 1fr 1fr;
+        grid-template-columns: minmax(220px, 220px) minmax(200px, 250px) 1fr 1fr;
         justify-items: stretch;
         height: calc(100% - 30px);
         width:100%;
@@ -46,8 +47,15 @@ import * as Feather from 'feather-icons';
 
 
 export class HomeComponent implements OnInit {
-  constructor() { }
+  showProfile: boolean = false;
+
+  constructor(private global: GlobalService) { }
+  
   ngOnInit() {
     Feather.replace();
+    this.global.showProfile$.subscribe(value => this.showProfile = value);
   }
+  ngOnDestroy(){
+    this.global.showProfile$.unsubscribe();
+}
 }

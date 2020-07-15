@@ -1,0 +1,21 @@
+<div class="wrapper">
+    <img [src]="currentUser.img" alt="Picture" height="100px" width="100px">
+    <form #details="ngForm" class="details">
+        <div class="input-grp">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" [ngModel]="currentUser.name">
+        </div>
+        <div class="input-grp">
+            <label for="mail">E-Mail Address</label>
+            <input type="text" id="mail" name="mail" [ngModel]="currentUser.mail" disabled >
+        </div>
+        <div class="input-grp">
+            <label for="designation">Designation</label>
+            <input type="text" id="deignation" name="dsgn" [ngModel]="currentUser.token">
+        </div>
+        <div class="btn-grp">
+            <input type="submit" value="Update" (click)="updateProfile(details)">
+            <input type="button" value="Cancel" (click)="closeProfile()">
+        </div>
+    </form>
+</div>

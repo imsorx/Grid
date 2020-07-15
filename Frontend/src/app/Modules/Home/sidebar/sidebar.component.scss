@@ -6,52 +6,43 @@
 }
 
 .profile {
-  min-height: 0;
-  padding: 20px 0;
+  padding: 24px 0;
+  position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #eeeeee;
+  color: #fff;
   -webkit-text-stroke: 0;
   background-image: var(--gradient);
-  background-size: 150%;
+  background-size: 200%;
   animation: infi 2s infinite linear alternate;
 
   img {
-    height: 80px;
-    width: 80px;
+    height: 40px;
+    width: 40px;
     border-radius: 100%;
-    border: solid #eeeeee 3px;
-    margin-bottom: 8px;
-    box-shadow: 2px 2px 15px var(--shadow);
+    border: solid #fff 2px;
+    margin-right: 8px;
   }
-
-  p {
-    margin-bottom: 4px;
-  }
-  .title {
-    text-transform: uppercase;
-  }
-  .subtitle {
-    display: block;
-    max-height: 0;
-    text-align: center;
-    font-size: 0.9rem;
-    transition: all 200ms;
-    overflow:hidden;
-  }
-  .active{
-    max-height: initial;
-  }
-  .toggle {
-    height: 16px;
-    transition: all 200ms;
-    cursor: pointer;
-  }
-  .rotate{
-    transition: all 200ms;
-    transform: rotate(180deg);
+  .details {
+    max-width: 130px;
+    
+    .title {
+      text-transform: uppercase;
+    }
+    .status{
+      opacity: 0.8;
+    }
+    span {
+      display: inline-block;
+      height: 13px;
+      width: 13px;
+      cursor: pointer;
+      svg {
+        height: 100%;
+        width: 105%;
+      }
+    }
   }
 }
 
