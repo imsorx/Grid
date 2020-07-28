@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core'
-import { CoreService } from '../../../Services/core.service';
-import { GlobalService } from '../../../services/global.service';
 import { NgForm } from '@angular/forms';
-import { httpService } from '../../../Services/http.service';
+import { httpService } from '../../../services/http.service';
+import { CoreService } from '../../../services/core.service';
+import { GlobalService } from '../../../services/global.service';
 
 @Component({
     selector: 'profile',

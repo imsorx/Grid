@@ -9,9 +9,9 @@ export class CoreService implements OnDestroy {
     public users: User[] = [];
 
     constructor(private httpService: httpService) {
-        
+
         this.currentUser = JSON.parse(localStorage.getItem('user'));
-        
+
         this.httpService.users.subscribe((users: User[]) => users.forEach(user => {
             this.users.push(user)
         }));

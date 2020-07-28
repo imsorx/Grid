@@ -25,7 +25,7 @@ export class GlobalService {
         this.notification$.next({ type, data });
     }
 
-    public toggleProfile(value:boolean):void{
+    public toggleProfile(value: boolean): void {
         this.showProfile$.next(value);
     }
 }

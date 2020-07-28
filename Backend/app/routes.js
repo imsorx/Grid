@@ -9,6 +9,7 @@ const fileUpload = require('./middlewares/files');
 router.post("/login", auth.login);
 router.post("/signup", auth.signup);
 
+//CRUD Operation
 router.get('/users/:id', verify, users.byId);
 router.get('/users', verify, users.all);
 router.patch('/users/', verify, avataUpload, users.update);

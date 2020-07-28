@@ -12,7 +12,7 @@ import { GlobalService } from './services/global.service';
 
 //Modules
 import { SharedModule } from './shared/shared.module';
-import { EntryModule } from './Modules/Entry/entry.module';
+import { EntryModule } from './modules/entry/entry.module';
 
 //Route
 import { AppRoutingModule } from './app-routing.module';
@@ -35,7 +35,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     EntryModule,
   ],
-  providers: [GlobalService, httpInterceptorProviders],
+  providers: [httpInterceptorProviders, GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,9 @@
+import { wsSocketService } from './../../services/ws.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
-import { SharedModule } from './../../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 import { HomeComponent } from './home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -15,8 +16,9 @@ import { SendboxComponent } from './chat/sendbox/sendbox.component';
 import { ProfileComponet } from './profile/profile.component'
 
 import { HomeRoutingModule } from './home-routing.module';
-import { ChatService } from '../../Services/chat.service';
-import { CoreService } from '../../Services/core.service';
+import { ChatService } from '../../services/chat.service';
+import { CoreService } from '../../services/core.service';
+
 
 @NgModule({
     declarations: [
@@ -36,7 +38,7 @@ import { CoreService } from '../../Services/core.service';
         FormsModule,
         SharedModule
     ],
-    providers: [ChatService, CoreService],
+    providers: [ChatService, CoreService, wsSocketService],
     exports: [
         FormsModule,
         HomeComponent

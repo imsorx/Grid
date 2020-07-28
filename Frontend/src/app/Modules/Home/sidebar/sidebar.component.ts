@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ElectronService } from '../../../Services/electron.service';
-import { CoreService } from '../../../Services/core.service';
+import { ElectronService } from '../../../services/electron.service';
+import { CoreService } from '../../../services/core.service';
 import { GlobalService } from '../../../services/global.service';
 
 

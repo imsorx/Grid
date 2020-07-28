@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as Feather from 'feather-icons';
-import { ChatService } from '../../../Services/chat.service';
+import { ChatService } from '../../../services/chat.service';
 
 @Component({
     selector: 'chat',
@@ -28,6 +28,7 @@ export class ChatComponent implements AfterViewInit, OnInit {
         this.chatService.messages$.subscribe(m => this.messages.push(m));
         Feather.replace();
     }
+
     ngAfterViewInit() {
     }
 }

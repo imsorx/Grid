@@ -32,7 +32,7 @@ export class httpService {
     public signup(details: { mail: string, pwd: string }): Observable<string> {
         return this.http.post<string>(`${this.API}/signup`, { name: details.mail, mail: details.mail, pwd: details.pwd });
     }
-    public deleteUser(){
+    public deleteUser() {
         return this.http.delete(`${this.API}/users/${JSON.parse(localStorage.getItem('user'))._id}`);
     }
 

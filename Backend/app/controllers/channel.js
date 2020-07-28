@@ -32,7 +32,7 @@ function getChannel(id) {
   })
 }
 module.exports = {
-  new: (name, admin, members) => { createChannel(name, admin, members) },
-  update: (id, channel) => { updateChannel(id, channel) },
-  get: (id) => { getChannel(id) }
+  new: (name, admin, members) => createChannel(name, admin, members),
+  update: (id, channel) => updateChannel(id, channel),
+  get: (id) => getChannel(id)
 };

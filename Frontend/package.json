@@ -95,6 +95,7 @@
     "node": ">=10.13.0"
   },
   "dependencies": {
-    "feather-icons": "4.28.0"
+    "feather-icons": "4.28.0",
+    "ws-wrapper": "^2.0.2"
   }
 }

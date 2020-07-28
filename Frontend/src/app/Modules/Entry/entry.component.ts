@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ElectronService } from '../../Services/electron.service';
-import * as Feather from 'feather-icons';
-import { httpService } from '../../Services/http.service';
 import { NgForm } from '@angular/forms';
+import * as Feather from 'feather-icons';
+import { httpService } from '../../services/http.service';
+import { ElectronService } from '../../services/electron.service';
 import { GlobalService } from '../../services/global.service';
 
 @Component({

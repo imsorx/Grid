@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ElectronService } from './Services/electron.service';
-import { AppConfig } from '../environments/environment.dev';
 import * as Feather from 'feather-icons';
+import { AppConfig } from '../environments/environment.dev';
 import { GlobalService } from './services/global.service';
+import { ElectronService } from './services/electron.service';
 
 
 @Component({

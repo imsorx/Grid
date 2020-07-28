@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core'
-import * as url from 'url';
 
 
 @Component({

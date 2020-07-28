@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CoreService } from '../../../Services/core.service';
+import { CoreService } from '../../../services/core.service';
 
 @Component({
     selector: 'list',
@@ -9,7 +9,7 @@ import { CoreService } from '../../../Services/core.service';
 
 export class ListComponent implements OnInit {
     id: string;
-    users:User[];
+    users: User[];
     constructor(private core: CoreService) {
         this.id = this.core.currentUser._id;
     }

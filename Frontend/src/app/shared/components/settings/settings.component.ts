@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as Feather from 'feather-icons';
 import { GlobalService } from '../../../services/global.service';
-import { ElectronService } from '../../../Services/electron.service';
-import { httpService } from '../../../Services/http.service';
+import { ElectronService } from '../../../services/electron.service';
+import { httpService } from '../../../services/http.service';
 
 @Component({
     selector: 'settings',
