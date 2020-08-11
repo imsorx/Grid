@@ -1,10 +1,19 @@
-<span><i data-feather="smile" class="icon" width="20px"></i> </span>
-<div class="container">
-  <div contenteditable="true"></div>
-</div>
-<span>
-  <i data-feather="file-plus" class="icon" width="20px"></i>
-</span>
-<span>
-  <i data-feather="send" class="icon" width="20px"></i>
-</span>
+<form (ngSubmit)="send()">
+  <div class="input-container">
+    <div #inputbox contenteditable="true"></div>
+    <label for="" (click)="showEmoji()">
+      <input type="button"  hidden />
+      <i data-feather="smile" class="icon" width="20px"></i>
+    </label>
+  </div>
+
+  <label for="">
+    <input type="button" hidden />
+    <i data-feather="file" class="icon" height="20px" width="20px"></i>
+  </label>
+
+  <label for="send">
+    <input type="submit" value="SEND" />
+    <i data-feather="send" class="icon" height="18px" width="18px"></i>
+  </label>
+</form>

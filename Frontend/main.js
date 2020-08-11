@@ -8,7 +8,7 @@ var serve = process.argv.slice(1).some(function (val) { return val === '--serve'
 var grid;
 function main() {
     if (serve) {
-        grid = new window_1.CreateWindow('http://localhost:4200/', 'http://localhost:4200/home', true);
+        grid = new window_1.CreateWindow('http://localhost:4200/', 'http://localhost:4200#/home', true);
     }
     else {
         var _url = url.format({
@@ -16,7 +16,7 @@ function main() {
             protocol: 'file:',
             slashes: true
         });
-        grid = new window_1.CreateWindow(_url, "_url/home");
+        grid = new window_1.CreateWindow(_url, _url + '#/home');
     }
 }
 try {

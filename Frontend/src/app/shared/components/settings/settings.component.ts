@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import * as Feather from 'feather-icons';
 import { GlobalService } from '../../../services/global.service';
 import { ElectronService } from '../../../services/electron.service';
-import { httpService } from '../../../services/http.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
     selector: 'settings',
@@ -12,8 +11,7 @@ import { httpService } from '../../../services/http.service';
 
 export class SettingsComponent implements OnInit {
 
-    constructor(private global: GlobalService, private electron: ElectronService,
-        private http: httpService) {
+    constructor(private global: GlobalService, private electron: ElectronService, private auth: AuthService) {
     }
 
     close() {
@@ -21,12 +19,11 @@ export class SettingsComponent implements OnInit {
     }
 
     deleteUser() {
-        this.http.deleteUser().subscribe(res => this.global.newToast('success', 'Account Deleted Successfully'), err => this.global.newToast('error', err.error.error))
+        this.auth.deleteUser().subscribe(res => this.global.newToast('success', 'Account Deleted Successfully'), err => this.global.newToast('error', err.error.error))
         setTimeout(() => {
             this.electron.ipcRenderer.invoke('auth', 400);
         }, 2000)
     }
     ngOnInit() {
-        Feather.replace()
     }
 }

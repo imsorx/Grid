@@ -1,8 +1,11 @@
-<div class="container">
-    <img [src]="img" alt="IMAGE" class="avatar">
-    <p class="details">
-        {{name}}
-        <br>
-        <span class="last-msg">{{msg}}</span>
-    </p>
+<div class="container" [ngClass]="{ active: isActive }">
+  <div class="avatar">
+    <img [src]="img" width="40px" height="40px" alt="IMAGE" />
+    <span [ngClass]="{ online: status == 'online' }"></span>
+  </div>
+  <p class="details">
+    {{ name }}
+    <br />
+    <span class="last-msg">{{ msg }}</span>
+  </p>
 </div>

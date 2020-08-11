@@ -8,12 +8,12 @@ import { Component, Input, AfterViewInit } from '@angular/core';
 })
 
 export class MessageComponent implements AfterViewInit {
-    messagesContainer: HTMLElement;
+
     @Input() me: boolean;
     @Input() msg: string;
+    @Input() time: Date;
+    messagesContainer: HTMLElement;
     container: HTMLElement;
-    date = new Date();
-    time: string = `${this.date.getUTCHours()}:${this.date.getUTCMinutes()} AM`;
     constructor() { }
 
     autoscroll(): void {

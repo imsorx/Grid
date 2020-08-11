@@ -1,85 +1,83 @@
 .wrapper {
   height: calc(100% - 30px);
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .hero {
-    width: 100%;
-    padding: 20px;
-    border-bottom: 1px solid var(--bg-light);
-    background: var(--gradient);
-    z-index: 50;
-    .title {
-      font-size: 1.5rem;
-    }
+  text-align: center;
+  display: grid;
+  place-content: center;
+  background: url("assets/ocean.jpg");
+  background-size: cover;
+  animation: flow 20s infinite ease-out alternate;
+
+  .title {
+    margin-bottom: 32px;
   }
+
   form {
-    margin: auto 0;
-    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
+    padding: 0 20px;
 
     .input-group {
       display: flex;
-      align-items: center;
       justify-content: center;
-      margin-bottom: 12px;
-      padding-left: 4px;
+      margin-bottom: 8px;
+      padding: 0 16px;
       border-radius: 20px;
       border: 2px solid transparent;
-      background: var(--bg-light);
-      box-shadow: 2px 4px 12px var(--shadow);
+      backdrop-filter: blur(4px) brightness(1.5);
+      transition: all 0.3s;
 
       input {
-        width: 100%;
-        height: 100%;
-        padding: 8px 16px 8px 4px;
+        padding: 8px 4px;
         border: none;
         outline: none;
         color: var(--fg-color);
         background-color: transparent;
-        font-family: inherit;
-        font-size: inherit;
       }
+
+      input[type="submit"] {
+        padding: 4px 4px;
+        cursor: pointer;
+      }
+
       &:focus-within {
         border: 2px solid var(--asst);
       }
-      .icon{
-        margin:0 8px;
-        opacity: 0.5;
+      &:last-child {
+        align-self: flex-end;
+        cursor: pointer;
       }
     }
-    .cta {
-      display: flex;
-      flex-direction: row-reverse;
-      .btn {
-        display: flex;
-        align-items: center;
-        padding: 8px 16px;
-        border-radius: 20px;
-        background: var(--gradient);
-        background-size: 150%;
-        box-shadow: 2px 4px 12px var(--shadow);
-        text-transform: uppercase;
-        transition: filter 200ms;
-        &:hover {
-          cursor: pointer;
-          filter: contrast(1.3);
-        }
-      }
-      .secondary {
-        background: transparent;
-        border: none;
-        box-shadow: none;
-      }
+    .valid {
+      background: var(--asst);
+    }
+    .invalid {
+      border: 2px solid var(--err);
+    }
+  }
+  .switch-form {
+    margin-top: 12px;
+    span {
+      text-decoration: underline;
+      cursor: pointer;
     }
   }
 }
 
 .icon {
-  opacity: 1;
-  height: 16px;
-  width: 16px;
+  margin: auto 0;
+  margin-right: 4px;
+  height: 14px;
+  width: 14px;
+}
+
+@keyframes flow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 1200%;
+  }
 }

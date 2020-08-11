@@ -11,26 +11,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: var(--fg-color);
   -webkit-text-stroke: 0;
-  background-image: var(--gradient);
   background-size: 200%;
-  animation: infi 2s infinite linear alternate;
 
   img {
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     border-radius: 100%;
-    border: solid #fff 2px;
+    border: solid var(--fg-color) 2px;
     margin-right: 8px;
   }
   .details {
     max-width: 130px;
-    
+
     .title {
       text-transform: uppercase;
     }
-    .status{
+    .status {
       opacity: 0.8;
     }
     span {
@@ -52,49 +50,55 @@
   flex-grow: 1;
 
   .item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 28px;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.9rem;
-    padding: 16px 28px;
-    display: flex;
-    align-items: center;
-    opacity: 0.8;
-    transition: all 200ms linear;
-
+    opacity: 0.7;
+    z-index: 0;
     svg {
       margin-right: 12px;
-      fill: transparent;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 95%;
+      height: 90%;
+      background: none;
+      transform: translate(-50%, -50%);
+      border-radius: 2px;
+      z-index: -1;
       transition: all 200ms linear;
     }
 
-    &:hover svg {
-      fill: var(--fg-color);
-    }
-
-    &:hover {
+    &:hover::after {
       background: var(--bg-light);
-      color: inherit;
     }
   }
 
   .active {
     opacity: 1;
-    svg {
-      fill: var(--fg-color);
+
+    &::after {
+      background: var(--bg-light);
+      box-shadow: 0px 16px 10px -16px var(--shadow);
+    }
+
+    &:hover {
+      background: none;
     }
   }
 
-  .item:nth-child(4) {
+  .item:nth-child(3) {
     margin-top: auto;
   }
-}
-
-@keyframes infi {
-  0% {
-    background-position: 100% 0;
-  }
-
-  100% {
-    background-position: 0 0;
+  .item:last-child::after{
+    transform: translate(-50%,-60%);
   }
 }

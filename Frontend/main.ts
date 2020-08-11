@@ -10,14 +10,14 @@ let grid: CreateWindow;
 function main() {
 
   if (serve) {
-    grid = new CreateWindow('http://localhost:4200/', 'http://localhost:4200/home', true);
+    grid = new CreateWindow('http://localhost:4200/', 'http://localhost:4200#/home', true);
   } else {
     let _url = url.format({
       pathname: path.join(__dirname, 'dist/index.html'),
       protocol: 'file:',
       slashes: true
     });
-    grid = new CreateWindow(_url, `_url/home`);
+    grid = new CreateWindow(_url, _url + '#/home');
   }
 
 }

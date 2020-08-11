@@ -1,4 +1,4 @@
 <div class="container" [ngClass]="{me:me}">
     {{msg}}
-    <p class="time">{{time}}</p>
+    <p class="time">{{time | date:'shortTime'}}</p>
 </div>

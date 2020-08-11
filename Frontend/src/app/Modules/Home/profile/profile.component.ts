@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { NgForm } from '@angular/forms';
-import { httpService } from '../../../services/http.service';
-import { CoreService } from '../../../services/core.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { GlobalService } from '../../../services/global.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
     selector: 'profile',
@@ -12,23 +11,28 @@ import { GlobalService } from '../../../services/global.service';
 
 export class ProfileComponet implements OnInit {
 
-    currentUser: User_details;
+    profileForm: FormGroup;
 
     constructor(
-        private core: CoreService,
         private global: GlobalService,
-        private http: httpService) { }
+        private auth: AuthService,
+        private fb: FormBuilder) { }
 
-    updateProfile(form: NgForm) {
-        let payload = { _id: this.currentUser._id, ...form.value };
-        this.http.updateUser(payload)
+    updateProfile() {
+        let payload = { _id: this.auth.loggedUser.id, ...this.profileForm.value };
+        this.auth.updateUser(payload)
             .subscribe(res => this.global.newToast("success", "Profile updated!"), err => this.global.newToast("error", err.error.error));
     }
     closeProfile() {
         this.global.toggleProfile(false);
-    }
+    } 
+
     ngOnInit() {
-        this.currentUser = this.core.currentUser;
+        this.profileForm = this.fb.group({
+            name: [this.auth.loggedUser.name],
+            mail: [{ value: this.auth.loggedUser.mail, disabled: true }],
+            dsg: [this.auth.loggedUser.dsg]
+        })
     }
 
 }

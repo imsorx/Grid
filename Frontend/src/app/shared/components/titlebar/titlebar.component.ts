@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ElectronService } from '../../../services/electron.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class TitlebarComponent {
     isDark: boolean = true;
     body: HTMLElement = document.body;
 
-    constructor(private electron: ElectronService) {
+    constructor(private electron: ElectronService, private router: Router) {
         this.win = this.electron.remote.getCurrentWindow();
     }
 

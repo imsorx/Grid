@@ -2,12 +2,12 @@ import { BrowserWindow, ipcMain } from 'electron';
 
 //Configs
 const entryCofig = {
-    height: 350,
+    height: 360,
     width: 350,
     frame: false,
     resizable: false,
     show: false,
-    icon:'/src/assets/icons/favicon.ico'
+    icon: './src/assets/icons/favicon.ico'
 }
 
 const mainConfig = {
@@ -43,7 +43,7 @@ export class CreateWindow {
         ipcMain.handle('auth', (_event, arg) => {
             if (arg == 200) {
                 this.EntryWindow.hide();
-                this.MainWindow = this.createMainWindow(this.EntryWindow, mainURL);
+                this.MainWindow = this.createMainWindow(mainURL);
                 this.MainWindow.show();
             }
             if (arg == 400) {
@@ -58,13 +58,14 @@ export class CreateWindow {
             });
             this.EntryWindow.webContents.openDevTools();
         }
+        this.EntryWindow.webContents.openDevTools();
 
         this.EntryWindow.once('ready-to-show', () => {
             this.EntryWindow.show()
         });
     }
 
-    createMainWindow(parent: BrowserWindow, url: string): BrowserWindow {
+    createMainWindow(url: string): BrowserWindow {
         var child = new BrowserWindow({
             ...mainConfig,
             webPreferences: {
@@ -74,6 +75,9 @@ export class CreateWindow {
         });
         child.loadURL(url);
         child.webContents.openDevTools();
+        if (this.serve) {
+            child.webContents.openDevTools();
+        }
         child.on('close', () => {
             this.MainWindow = null
         });

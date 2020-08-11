@@ -1,43 +1,8 @@
-:root {
-  --bg-color: hsl(0, 0%, 10%);
-  --bg-dark: hsl(0, 0%, 8%);
-  --bg-light: hsla(0, 0%, 100%, 0.05);
-  --fg-color: hsla(0, 0%, 100%, 0.9);
-  --fg-light: hsla(0, 0%, 100%, 0.5);
-  --shadow: hsla(0, 0%, 0%, 0.1);
-  --gradient: linear-gradient(
-    120deg,
-    hsl(142, 70%, 50%) 0%,
-    hsl(200, 70%, 60%) 100%
-  );
-  --asst: hsl(142, 70%, 50%);
-  --selection: hsl(200, 90%, 60%);
-}
-
-.light {
-  --bg-color: hsla(0, 0%, 95%, 1);
-  --bg-dark: hsla(0, 0%, 90%, 1);
-  --bg-light: hsla(0, 0%, 100%, 1);
-  --fg-color: hsla(0, 0%, 20%, 1);
-  --fg-light: hsla(0, 0%, 0%, 0.5);
-  --shadow: hsla(0, 0%, 0%, 0.1);
-  --gradient: linear-gradient(
-    120deg,
-    hsl(142, 80%, 70%) 0%,
-    hsl(200, 90%, 70%) 100%
-  );
-  --asst: hsl(142, 70%, 60%);
-  --selection: hsl(200, 90%, 70%);
-  -webkit-text-stroke: 0.25px;
-  .error {
-    -webkit-text-stroke: 0;
-  }
-}
+@use 'themes';
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html,
@@ -54,6 +19,11 @@ body {
   user-select: none;
   position: relative;
 }
+input{
+  letter-spacing: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
 
 //Text Selection style
 ::selection {
@@ -62,19 +32,19 @@ body {
 
 //Scrollbar styles
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-button{
   height: 4px;
+  width: 4px;
 }
-
-::-webkit-scrollbar-button {
-  height: 12px;
-  width: 12px;
-}
-
-:hover::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   border-radius: 4px 0 0 4px;
   background: var(--asst);
 }
+
+
 
 //Loader's Styles
 .loader {

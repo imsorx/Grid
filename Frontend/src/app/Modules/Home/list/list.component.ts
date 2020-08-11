@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CoreService } from '../../../services/core.service';
+import { AuthService } from '../../../services/auth.service';
+import { UsersService } from '../../../services/users.service';
 
 @Component({
     selector: 'list',
@@ -8,13 +9,14 @@ import { CoreService } from '../../../services/core.service';
 })
 
 export class ListComponent implements OnInit {
+
     id: string;
-    users: User[];
-    constructor(private core: CoreService) {
-        this.id = this.core.currentUser._id;
+    searchTerm: string;
+
+    constructor(private auth: AuthService, private userService: UsersService) {
+        this.id = this.auth.loggedUser.id;
     }
 
     ngOnInit() {
-        this.users = this.core.users;
     }
 }

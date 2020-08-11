@@ -1,0 +1,52 @@
+//Dark Theme (Default)
+:root {
+  //Background colors
+  --bg-color: hsl(0, 0%, 10%);
+  --bg-dark: hsl(0, 0%, 8%);
+  --bg-light: hsla(0, 0%, 100%, 0.05);
+
+  //Foreground colors
+  --fg-color: hsla(0, 0%, 100%, 0.9);
+  --fg-light: hsla(0, 0%, 100%, 0.5);
+
+  //Shadow color
+  --shadow: hsla(0, 0%, 0%, 0.1);
+
+  --gradient: linear-gradient(
+    120deg,
+    hsl(142, 70%, 50%) 0%,
+    hsl(200, 70%, 60%) 100%
+  );
+
+  //Asscent color
+  --asst: hsl(142, 70%, 50%);
+
+  //Selection color
+  --selection: hsl(200, 90%, 60%);
+
+  //Action Colors
+  --err: hsl(348, 100%, 61%);
+  --warn: hsl(48, 100%, 67%);
+  --success: hsl(141, 53%, 53%);
+}
+
+//Light theme
+.light {
+  --bg-color: hsla(0, 0%, 95%, 1);
+  --bg-dark: hsla(0, 0%, 90%, 1);
+  --bg-light: hsla(0, 0%, 100%, 1);
+  --fg-color: hsla(0, 0%, 20%, 1);
+  --fg-light: hsla(0, 0%, 0%, 0.5);
+  --shadow: hsla(0, 0%, 0%, 0.1);
+  --gradient: linear-gradient(
+    120deg,
+    hsl(142, 80%, 70%) 0%,
+    hsl(200, 90%, 70%) 100%
+  );
+  --asst: hsl(142, 70%, 60%);
+  --selection: hsl(200, 90%, 70%);
+  -webkit-text-stroke: 0.25px;
+  .error {
+    -webkit-text-stroke: 0;
+  }
+}

@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { TitlebarComponent, ToastComponent, SettingsComponent } from './components';
 import { WebviewDirective, LoadImgDirective } from './directives';
-import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './pipes/filter.pipe'
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { FormsModule } from '@angular/forms';
     WebviewDirective,
     TitlebarComponent,
     SettingsComponent,
-    ToastComponent
+    ToastComponent,
+    FilterPipe
   ],
   imports: [CommonModule, FormsModule],
   exports: [
@@ -20,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     TitlebarComponent,
     SettingsComponent,
-    ToastComponent
+    ToastComponent,
+    FilterPipe
   ]
 })
 export class SharedModule { }

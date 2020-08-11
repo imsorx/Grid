@@ -29,6 +29,7 @@ export class ToastComponent implements OnInit {
     this.global.notification$.subscribe((data: { type, data }) => {
       let toast = new Toast(data.type, data.data);
       this.toasts.push(toast);
+      setTimeout(() => toast.dismissed = true,5000)
     })
   }
 

@@ -1,6 +1,5 @@
 import { wsSocketService } from './../../services/ws.service';
 import { Component, OnInit } from '@angular/core';
-import * as Feather from 'feather-icons';
 import { GlobalService } from '../../services/global.service';
 
 @Component({
@@ -53,7 +52,6 @@ export class HomeComponent implements OnInit {
   constructor(private global: GlobalService, private ws: wsSocketService) { }
 
   ngOnInit() {
-    Feather.replace();
     this.global.showProfile$.subscribe(value => this.showProfile = value);
   }
   ngOnDestroy() {
