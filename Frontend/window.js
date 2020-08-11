@@ -14,12 +14,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var electron_1 = require("electron");
 //Configs
 var entryCofig = {
-    height: 350,
+    height: 360,
     width: 350,
     frame: false,
     resizable: false,
     show: false,
-    icon: '/src/assets/icons/favicon.ico'
+    icon: './src/assets/icons/favicon.ico'
 };
 var mainConfig = {
     minWidth: 800,
@@ -42,7 +42,7 @@ var CreateWindow = /** @class */ (function () {
         electron_1.ipcMain.handle('auth', function (_event, arg) {
             if (arg == 200) {
                 _this.EntryWindow.hide();
-                _this.MainWindow = _this.createMainWindow(_this.EntryWindow, mainURL);
+                _this.MainWindow = _this.createMainWindow(mainURL);
                 _this.MainWindow.show();
             }
             if (arg == 400) {
@@ -56,11 +56,12 @@ var CreateWindow = /** @class */ (function () {
             });
             this.EntryWindow.webContents.openDevTools();
         }
+        this.EntryWindow.webContents.openDevTools();
         this.EntryWindow.once('ready-to-show', function () {
             _this.EntryWindow.show();
         });
     }
-    CreateWindow.prototype.createMainWindow = function (parent, url) {
+    CreateWindow.prototype.createMainWindow = function (url) {
         var _this = this;
         var child = new electron_1.BrowserWindow(__assign(__assign({}, mainConfig), { webPreferences: {
                 nodeIntegration: true,
@@ -68,6 +69,9 @@ var CreateWindow = /** @class */ (function () {
             } }));
         child.loadURL(url);
         child.webContents.openDevTools();
+        if (this.serve) {
+            child.webContents.openDevTools();
+        }
         child.on('close', function () {
             _this.MainWindow = null;
         });

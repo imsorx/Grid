@@ -21,7 +21,7 @@ function Engine(httpServer) {
     if (users.has(id)) {
       users.delete(id);
       users.forEach((user) => {
-        user.emit("offline", id);
+        user.emit('offline', id);
       });
     }
   }
@@ -29,9 +29,9 @@ function Engine(httpServer) {
     if (users.has(userid)) {
       throw new Error('Already logged in, Logout previous session first!');
     } else {
-      socket.set("id", userid);
+      socket.set('id', userid);
       users.forEach((user) => {
-        user.emit("online", userid);
+        user.emit('online', userid);
       });
       users.set(userid, socket);
     }
@@ -39,7 +39,7 @@ function Engine(httpServer) {
   }
 
   //make sure user is logged out on disconnect
-  serverWrapper.on("disconnect", (socket) => {
+  serverWrapper.on('disconnect', (socket) => {
     let id = socket.get("id");
     if (id) {
       logout(id);
@@ -53,7 +53,7 @@ function Engine(httpServer) {
     members.forEach(member => {
       member = '' + member;
       if (member != from) {
-        sendMessage(member, "msg", from, msgId, message);
+        sendMessage(member, 'msg', from, msgId, message);
       }
     });
   }
@@ -75,12 +75,17 @@ function Engine(httpServer) {
   }
 
   //listening to events on all connected sockets
-  serverWrapper.on("login", function (id) {
+
+
+  //Login to socket
+  serverWrapper.on('login', function (id) {
     login(this, id);
   });
-  serverWrapper.on("logout", function () {
+  serverWrapper.on('logout', function () {
     logout(this);
   });
+
+  //Conversation stream
   serverWrapper
     .of("convers")
     .on("new", (user1, user2) => Conversation.new(user1, user2));
@@ -89,6 +94,8 @@ function Engine(httpServer) {
     .on("message", (parentID, from, message) =>
       handleConverseMessage(parentID, from, message)
     );
+
+  //Channel Stream
   serverWrapper
     .of("channel")
     .on("new", (name, owner, members = []) =>

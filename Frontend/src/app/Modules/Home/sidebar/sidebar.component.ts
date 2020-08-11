@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ElectronService } from '../../../services/electron.service';
-import { CoreService } from '../../../services/core.service';
 import { GlobalService } from '../../../services/global.service';
+import { AuthService } from '../../../services/auth.service';
 
 
 @Component({
@@ -12,13 +12,11 @@ import { GlobalService } from '../../../services/global.service';
 
 export class SidebarComponent implements OnInit {
 
-    currentUser: User_details;
 
     constructor(
         private electron: ElectronService,
         private global: GlobalService,
-        private core: CoreService) {
-    }
+        private auth: AuthService) { }
 
     logout(): void {
         this.electron.ipcRenderer.invoke('auth', 400);
@@ -41,7 +39,5 @@ export class SidebarComponent implements OnInit {
     showProfile() {
         this.global.toggleProfile(true);
     }
-    ngOnInit() {
-        this.currentUser = this.core.currentUser;
-    }
+    ngOnInit() { }
 }

@@ -1,9 +1,13 @@
 export class Message {
 
-    timsStamp: Date;
-    seen: boolean = false
+    timeStamp: Date;
 
-    constructor(private data: string, private own: boolean) {
-        this.timsStamp = new Date();
+    constructor(
+        public parantID: string,
+        public data: string,
+        public me: boolean,
+        public seen: boolean = true
+    ) {
+        this.timeStamp = new Date();
     }
 }

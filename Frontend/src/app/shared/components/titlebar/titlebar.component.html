@@ -2,7 +2,7 @@
   <li><img src="assets/icons/android-chrome-192x192.png" /></li>
   <li class="title">Grid Messenger</li>
   <li>
-    <span (click)="toggleMode()" class="toggle" [ngClass]="{night : isDark}">
+    <span *ngIf="!router.isActive('/',true)" (click)="toggleMode()" class="toggle" [ngClass]="{night : isDark}">
       <i data-feather="moon" class="icon" width="16px"></i>
       <i data-feather="sun" class="icon" width="16px"></i>
     </span>

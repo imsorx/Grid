@@ -1,37 +1,43 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
-import { Observable, Subject } from 'rxjs';
-import { httpService } from './http.service';
+import { Observable, Subject, ReplaySubject } from 'rxjs';
+import { UsersService } from './users.service';
+import { User } from '../models/user';
+import { Message } from '../models/message';
 
 
 @Injectable()
 export class ChatService {
 
     user$: Subject<User> = new Subject();
-    messages$: Observable<Message>;
+    messages$: ReplaySubject<Message>;
 
     dummy = [
         {
-            own: true,
+            parentId: '1',
+            me: true,
             data: 'Please! you will get your shipment by tommorow'
         },
         {
-            own: false,
+            parentId: '1',
+            me: false,
             data: 'You are oliberated'
         },
         {
-            own: false,
+            parentId: '1',
+            me: false,
             data: 'By the orders of Peaky Blinders!'
         }
     ]
 
-    constructor(private route: ActivatedRoute, private httpService: httpService) {
+    constructor(private route: ActivatedRoute, private usersService: UsersService) {
         this.route.params.subscribe(params => {
-            this.httpService.user(params['id']).subscribe((u: User) => {
+            this.usersService.user(params['id']).subscribe((u: User) => {
                 this.user$.next(u);
             });
         })
-        this.messages$ = new Observable(observer => this.dummy.forEach(m => observer.next(m)));
+        this.messages$ = new ReplaySubject();
+        this.dummy.forEach(m => this.messages$.next(new Message(m.parentId, m.data, m.me)));
     }
 
     public get user(): Subject<User> {
@@ -40,6 +46,11 @@ export class ChatService {
 
 
     public get messages(): Observable<Message> {
-        return this.messages$
+        return this.messages$.asObservable();
+    }
+
+    public newMsg(data: string, seen?: boolean) {
+        let msg = new Message('1', data, true, seen);
+        this.messages$.next(msg);
     }
 }

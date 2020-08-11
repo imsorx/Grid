@@ -4,60 +4,58 @@
   border-right: 1px solid var(--bg-dark);
 }
 
-.input-group {
+.sticky-section {
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
-  position: relative;
-  padding: 12px 0;
+  flex-wrap: nowrap;
+  padding: 16px 8px;
   border-bottom: 1px solid var(--bg-dark);
+  background-color: var(--bg-color);
+  z-index: 5;
 
-  input {
-    background: var(--bg-light);
-    border: none;
-    padding: 4px 28px 4px 8px;
-    width: 90%;
-    margin: 0 auto;
-    border-radius: 24px;
-    outline: none;
-    font-family: "Poppins";
-    color: var(--fg-color);
-    border: 2px solid var(--bg-dark);
+  label {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    padding: 4px 12px;
     transition: all 200ms;
-  }
 
-  input::placeholder {
-    font-family: "Poppins";
-    font-size: 0.95rem;
-    color: var(--fg-light);
-  }
+    input {
+      min-width: 0;
+      border: none;
+      margin: 0 auto;
+      outline: none;
+      background-color: transparent;
+      font-family: "Poppins";
+      color: var(--fg-color);
+    }
 
-  input:focus {
-    border: 2px solid var(--asst);
-  }
-
-  .icon {
-    position: absolute;
-    height: 20px;
-    right: 0;
-    margin-right: 20px;
-    opacity: 0.5;
+    &:first-child {
+      background: var(--bg-light);
+      border-radius: 24px;
+      border: 2px solid var(--bg-dark);
+    }
+    &:focus-within {
+      border: 2px solid var(--asst);
+    }
+    &:last-child:focus-within > svg {
+      stroke: var(--asst);
+    }
+    .icon {
+      opacity: 0.7;
+      margin-left: 4px;
+      width: 20px;
+    }
   }
 }
 
 .wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  overflow-y: auto;
-  user {
-    transition: all 200ms;
-    outline: none;
-    &:hover {
-      background-color: var(--bg-light);
-    }
-  }
-  .active {
-    background-color: var(--bg-light);
-    border-left: 4px solid var(--asst);
-  }
+  overflow-y: scroll;
+  padding: 10px 0 10px 10px;
 }

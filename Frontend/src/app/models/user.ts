@@ -1,22 +1,15 @@
 export class User {
 
-    //Additional Properties
-    status: 'online' | 'busy' | 'away' = 'online';
+    public id: string;
+    public name: string;
+    public imgUrl: string;
+    public mail: string;
+    public status: string = 'online';
 
-    //Initialize with details
-    constructor(
-        private token: string,
-        private id: string,
-        public name: string,
-        public mail: string,
-        public img: string,
-        public dsg: string) {
+    constructor(response: userResponse) {
+        this.id = response._id;
+        this.name = response.name;
+        this.imgUrl = response.img;
+        this.mail = response.mail;
     }
-
-    //Update user details
-    public update(_name?: string, _dsg?: string) {
-        this.name = _name;
-        this.dsg = _dsg;
-    }
-
 }

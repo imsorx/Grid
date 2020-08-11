@@ -1,9 +1,33 @@
-<div class="input-group">
-  <input id="search" type="text" placeholder="Search users.." />
-  <i data-feather="search" class="icon"></i>
+<div class="sticky-section">
+  <label for="search">
+    <input
+      id="search"
+      [(ngModel)]="searchTerm"
+      type="text"
+      placeholder="Search user.."
+    />
+    <i data-feather="search" class="icon"></i>
+  </label>
+  <label for="new-chat">
+    <input type="checkbox" [(ngModel)]="newChat" hidden id="new-chat" />
+    <i data-feather="user-plus" class="icon"></i>
+  </label>
 </div>
 
-<div *ngFor="let user of users" class="wrapper">
-  <user *ngIf="user._id != id" [name]="user.name" [msg]="user.mail" [img]="user.img"
-    [routerLink]="['chat', user._id]" routerLinkActive="active"></user>
+<div class="wrapper">
+  <ng-container *ngIf="newChat">
+    <ng-container *ngFor="let user of userService.users | filter: searchTerm">
+      <user
+        *ngIf="user.id != id"
+        [name]="user.name"
+        [msg]="user.mail"
+        [img]="user.imgUrl"
+        [status]="user.status"
+        [routerLink]="['chat', user.id]"
+        routerLinkActive
+        #route= "routerLinkActive"
+        [isActive]="route.isActive"
+      ></user>
+    </ng-container>
+  </ng-container>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, AfterViewChecked, OnDestroy } from '@angular/core';
 import * as Feather from 'feather-icons';
 import { AppConfig } from '../environments/environment.dev';
 import { GlobalService } from './services/global.service';
@@ -10,7 +10,7 @@ import { ElectronService } from './services/electron.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnDestroy,AfterViewChecked {
 
   isSettings: Boolean = false;
 
@@ -45,7 +45,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnInit() {
+  ngAfterViewChecked() {
     Feather.replace();
   }
   ngOnDestroy() {

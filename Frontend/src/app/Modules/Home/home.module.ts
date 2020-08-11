@@ -1,9 +1,9 @@
-import { wsSocketService } from './../../services/ws.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
+import { HomeRoutingModule } from './home-routing.module';
 
 import { HomeComponent } from './home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -15,9 +15,8 @@ import { MessageComponent } from './chat/message/message.component';
 import { SendboxComponent } from './chat/sendbox/sendbox.component';
 import { ProfileComponet } from './profile/profile.component'
 
-import { HomeRoutingModule } from './home-routing.module';
+import { wsSocketService } from './../../services/ws.service';
 import { ChatService } from '../../services/chat.service';
-import { CoreService } from '../../services/core.service';
 
 
 @NgModule({
@@ -36,9 +35,10 @@ import { CoreService } from '../../services/core.service';
         CommonModule,
         HomeRoutingModule,
         FormsModule,
+        ReactiveFormsModule,
         SharedModule
     ],
-    providers: [ChatService, CoreService, wsSocketService],
+    providers: [ChatService, wsSocketService],
     exports: [
         FormsModule,
         HomeComponent

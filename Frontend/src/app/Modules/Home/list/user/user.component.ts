@@ -8,12 +8,15 @@ import { Component, OnInit, Input } from '@angular/core'
 })
 
 export class UserComponent implements OnInit {
+
     @Input() name: string;
     @Input() msg: string;
     @Input() img: string;
+    @Input() status: string;
+    @Input() isActive: boolean;
+
     constructor() {
     }
     ngOnInit() {
-
     }
 }

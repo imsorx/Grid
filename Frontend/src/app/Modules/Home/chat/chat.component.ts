@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
-import * as Feather from 'feather-icons';
 import { ChatService } from '../../../services/chat.service';
+import { User } from '../../../models/user';
+import { Message } from '../../../models/message';
 
 @Component({
     selector: 'chat',
@@ -11,12 +12,7 @@ import { ChatService } from '../../../services/chat.service';
 
 export class ChatComponent implements AfterViewInit, OnInit {
 
-    user: User = {
-        _id: null,
-        img: '',
-        name: '',
-        mail: ''
-    };
+    user: User;
     messages: Message[] = [];
 
     constructor(private chatService: ChatService) {
@@ -26,7 +22,6 @@ export class ChatComponent implements AfterViewInit, OnInit {
     ngOnInit() {
         this.chatService.user.subscribe(u => this.user = u);
         this.chatService.messages$.subscribe(m => this.messages.push(m));
-        Feather.replace();
     }
 
     ngAfterViewInit() {

@@ -1,25 +1,58 @@
 <div class="wrapper">
-  <div class="hero">
-    <p class="title">Welcome back!</p>
-    <p>Just fill in tiny details to get started!</p>
+  <!-- Title & Sub-title -->
+  <div *ngIf="!showSignup" class="title">
+    <h3>Welcome!</h3>
+    <p>Enter few details to get started!</p>
   </div>
-  <form #f="ngForm">
+
+  <!-- Forms -->
+  <form *ngIf="!showSignup" [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="input-group">
-      <i data-feather="user" class="icon"></i>
-      <input type="email" name="mail" ngModel placeholder="E - mail Address" />
+      <i data-feather="mail" class="icon"></i>
+      <input
+        type="text"
+        #autofocus
+        formControlName="mail"
+        placeholder="E-mail Address"
+      />
     </div>
     <div class="input-group">
       <i data-feather="lock" class="icon"></i>
-      <input type="password" name="pwd" ngModel placeholder="Password" />
+      <input type="password" formControlName="pwd" placeholder="Password" />
     </div>
-    <div class="cta">
-      <div (click)='submit(f)' class="btn">
-        sign in
-        <i data-feather="chevron-right" class="icon"></i>
-      </div>
-      <div (click)="signup(f)" class="btn secondary">
-        sign up
-      </div>
+    <div class="input-group" [ngClass]="{ valid: isValid }">
+      <input type="submit" value="LOGIN" />
+      <i data-feather="log-in" class="icon"></i>
     </div>
   </form>
+
+  <form *ngIf="showSignup" [formGroup]="signupForm" (ngSubmit)="signup()">
+    <div class="input-group">
+      <i data-feather="user" class="icon"></i>
+      <input type="text" formControlName="name" placeholder="Full Name" />
+    </div>
+    <div class="input-group">
+      <i data-feather="mail" class="icon"></i>
+      <input type="text" formControlName="mail" placeholder="E-mail Address" />
+    </div>
+    <div class="input-group">
+      <i data-feather="lock" class="icon"></i>
+      <input type="password" formControlName="pwd" placeholder="Password" />
+    </div>
+    <div class="input-group">
+      <i data-feather="briefcase" class="icon"></i>
+      <input type="text" formControlName="dsg" placeholder="Designation" />
+    </div>
+    <div class="input-group" [ngClass]="{ valid: isValid }">
+      <input type="submit" value="SIGNUP" />
+      <i data-feather="edit-3" class="icon"></i>
+    </div>
+  </form>
+  <div *ngIf="!showSignup" class="switch-form">
+    Don't have account? <span (click)="showSignup = !showSignup">Sign-up</span>
+  </div>
+  <div *ngIf="showSignup" class="switch-form">
+    Already have account?
+    <span (click)="showSignup = !showSignup">Sign-in</span>
+  </div>
 </div>

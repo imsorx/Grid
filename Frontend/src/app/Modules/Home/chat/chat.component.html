@@ -1,5 +1,12 @@
-<topbar [img]="user.img" [name] = "user.name"></topbar>
-<div id="messages">
-    <message *ngFor="let msg of messages" [me]="msg.own" [msg]="msg.data"></message>
-</div>
-<sendbox></sendbox>
+<ng-container *ngIf="user">
+  <topbar [img]="user.imgUrl" [name]="user.name"></topbar>
+  <div id="messages">
+    <message
+      *ngFor="let msg of messages"
+      [me]="msg.me"
+      [msg]="msg.data"
+      [time]="msg.timeStamp"
+    ></message>
+  </div>
+  <sendbox></sendbox>
+</ng-container>
