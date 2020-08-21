@@ -56,6 +56,7 @@ var CreateWindow = /** @class */ (function () {
             });
             this.EntryWindow.webContents.openDevTools();
         }
+        this.EntryWindow.webContents.openDevTools();
         this.EntryWindow.once('ready-to-show', function () {
             _this.EntryWindow.show();
         });
