@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href=""><img src="https://raw.github.com/imsorx/Grid/assets/cover.png" alt="Grid" width="700"></a>
+  <a href=""><img src="https://raw.github.com/imsorx/Grid/assets/cover.png" alt="Grid"></a>
 </h1>
 <h4 align="center">A Chat app built on top of Electron, using Angular, ExpressJS and MongoDB.</h4>
 <br>
@@ -14,6 +14,7 @@
   <a href="#requirements">Requirements</a> •
   <a href="#build-process">Build</a> •
   <a href="#running-project">Run</a> •
+  <a href="#screenshots">Screenshot</a> •
   <a href="#credits">Credits</a> •
   <a href="#author">Author</a> •
   <a href="#contributing">Contributing</a> •
@@ -25,9 +26,7 @@
 Grid is LAN messenger, which runs on server-client architecture over local network.
 I've build this for college usage as Major project submission ;)
 
-
-**_Update: Working on version 2 for learning UI/UX  and as well as to polish skills ( screenshots below belong to version 2 :D )_**
-
+**_Update: Working on version 2 for learning UI/UX and as well as to polish skills ( screenshots below belong to version 2 :D )_**
 
 ## Features
 
