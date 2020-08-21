@@ -63,5 +63,6 @@ label {
 
   &:last-child {
     background: var(--asst);
+    filter: grayscale(0.2);
   }
 }

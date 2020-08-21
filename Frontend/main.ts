@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app } from 'electron';
 import { CreateWindow } from './window';
 import * as path from 'path';
 import * as url from 'url';

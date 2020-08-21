@@ -1,13 +1,22 @@
-<!-- <div *ngIf="toastContent" class="toast" [ngClass]="{'error': toastType === 'error', 'notice': toastType === 'notice', 'success': toastType === 'success'}">{{ toastContent }}
-      <span class="close" [ngClass]="{'close-error': toastType === 'error', 'close-notice': toastType === 'notice', 'close-success': toastType === 'success'}" (click)="dismissToast()">x</span>
-</div> -->
-
 <div class="wrapper">
-      <ng-container *ngFor="let toast of toasts">
-            <div class="toast" *ngIf="!toast.dismissed"
-                  [ngClass]="{'error': toast.type == 'error','warn':toast.type == 'warn', 'success': toast.type == 'success'}">
-                  <div class="content">{{toast.content}}</div>
-                  <div class="close" (click)="toast.dismissed = !toast.dismissed">x</div> 
-            </div>
-      </ng-container>
+  <ng-container *ngFor="let toast of toasts">
+    <div
+      class="toast"
+      *ngIf="!toast.dismissed"
+      [ngClass]="{
+        error: toast.type == 'error',
+        warn: toast.type == 'warn',
+        success: toast.type == 'success'
+      }"
+    >
+      <div class="header">
+        <p>{{ toast.title }}</p>
+        <span (click)="toast.dismissed = !toast.dismissed">
+          <i data-feather="x" width="12px" height="12px"></i>
+        </span>
+        <div class="progress" [style.width]="toast.percent+'%'"></div>
+      </div>
+      <p class="content">{{ toast.content }}</p>
+    </div>
+  </ng-container>
 </div>

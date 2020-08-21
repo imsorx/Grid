@@ -58,7 +58,6 @@ export class CreateWindow {
             });
             this.EntryWindow.webContents.openDevTools();
         }
-        this.EntryWindow.webContents.openDevTools();
 
         this.EntryWindow.once('ready-to-show', () => {
             this.EntryWindow.show()
@@ -74,7 +73,6 @@ export class CreateWindow {
             }
         });
         child.loadURL(url);
-        child.webContents.openDevTools();
         if (this.serve) {
             child.webContents.openDevTools();
         }

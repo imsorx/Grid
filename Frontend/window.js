@@ -56,7 +56,6 @@ var CreateWindow = /** @class */ (function () {
             });
             this.EntryWindow.webContents.openDevTools();
         }
-        this.EntryWindow.webContents.openDevTools();
         this.EntryWindow.once('ready-to-show', function () {
             _this.EntryWindow.show();
         });
@@ -68,7 +67,6 @@ var CreateWindow = /** @class */ (function () {
                 allowRunningInsecureContent: (this.serve) ? true : false
             } }));
         child.loadURL(url);
-        child.webContents.openDevTools();
         if (this.serve) {
             child.webContents.openDevTools();
         }

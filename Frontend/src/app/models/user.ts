@@ -4,7 +4,7 @@ export class User {
     public name: string;
     public imgUrl: string;
     public mail: string;
-    public status: string = 'online';
+    public status: string = 'offline';
 
     constructor(response: userResponse) {
         this.id = response._id;
