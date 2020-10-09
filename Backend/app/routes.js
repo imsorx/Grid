@@ -17,9 +17,9 @@ router.delete('/users/:id', verify, users.delete);
 
 router.post('/uploads', verify, fileUpload, (req, res) => { res.send(req.files) });
 router.get('/uploads/avatar/:id?', (req, res) => req.params.id ? res.sendFile(__dirname + `/uploads/avatars/${req.params.id}`) : res.sendFile(__dirname + `/uploads/avatars/default.jpg`))
-router.get('/uploads/:name', verify, (req, res) => res.sendFile(__dirname + `/uploads/files/${req.params.name}`))
+router.get('/uploads/:name', verify, (req, res) => res.sendFile(__dirname + `/uploads/files/${req.params.name}`));
 
-router.use(express.static(__dirname + '/app/static/'));
+router.use(express.static('./static'));
 router.get('/', (req, res) => {
     res.sendFile(__dirname + '/static/index.html')
 });

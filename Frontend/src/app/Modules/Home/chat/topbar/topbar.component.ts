@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'topbar',
@@ -7,8 +7,13 @@ import { Component, Input } from '@angular/core';
 })
 
 export class TopbarComponent {
-    @Input() img:string;
-    @Input() name:string;
+    @Input() img: string;
+    @Input() name: string;
+    @Output() newCall: EventEmitter<string> = new EventEmitter<string>();
 
     constructor() { }
+
+    makeCall() {
+        this.newCall.emit(name)
+    }
 }

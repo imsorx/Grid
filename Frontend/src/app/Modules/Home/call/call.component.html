@@ -1,0 +1,11 @@
+<div class="remote">
+  <video #remoteVid src="assets/test.mp4" loop autoplay></video>
+</div>
+<video class="user-vid" #userVideo autoplay> </video> 
+<div class="overlay">
+  <ul class="controls">
+    <li><i data-feather="mic" height="20px"></i></li>
+    <li><i data-feather="camera" height="20px"></i></li>
+    <li (click)="endCall()"><i data-feather="phone-off" height="20px"></i></li>
+  </ul>
+</div>

@@ -14,7 +14,8 @@ const mainConfig = {
     minWidth: 800,
     minHeight: 600,
     frame: false,
-    show: false
+    show: false,
+    icon: './src/assets/icons/favicon.ico'
 }
 
 
@@ -58,7 +59,6 @@ export class CreateWindow {
             });
             this.EntryWindow.webContents.openDevTools();
         }
-        this.EntryWindow.webContents.openDevTools();
 
         this.EntryWindow.once('ready-to-show', () => {
             this.EntryWindow.show()
@@ -74,9 +74,7 @@ export class CreateWindow {
             }
         });
         child.loadURL(url);
-        if (this.serve) {
-            child.webContents.openDevTools();
-        }
+        if (this.serve) child.webContents.openDevTools();
         child.on('close', () => {
             this.MainWindow = null
         });

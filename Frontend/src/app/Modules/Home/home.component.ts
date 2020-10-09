@@ -1,10 +1,17 @@
 import { wsSocketService } from './../../services/ws.service';
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
+import { CallService } from '../../services/call.service';
 
 @Component({
   selector: 'home',
-  template: '<sidebar></sidebar><list></list><div class="chat-wrapper"><router-outlet></router-outlet></div><profile *ngIf="showProfile"></profile>',
+  template: `<call-component *ngIf="callService.callStatus"></call-component>
+  <sidebar></sidebar>
+  <list></list>
+  <div class="chat-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+  <profile *ngIf="showProfile"></profile>`,
   styles: [`
     :host {
         display: grid;
@@ -27,7 +34,7 @@ import { GlobalService } from '../../services/global.service';
         height:100%;
         min-height: 0;
         position:relative;
-        z-index:10;
+        z-index:0;
       }
       .chat-wrapper::after{
         content:'';
@@ -42,6 +49,13 @@ import { GlobalService } from '../../services/global.service';
         opacity:0.15;
         z-index:-1;
       }
+      call-component{
+        position: absolute;
+        background: var(--bg-color);
+        width: 100%;
+        height: calc(100% - 30px);
+        z-index:10
+      }
       `],
 })
 
@@ -49,7 +63,7 @@ import { GlobalService } from '../../services/global.service';
 export class HomeComponent implements OnInit {
   showProfile: boolean = false;
 
-  constructor(private global: GlobalService, private ws: wsSocketService) { }
+  constructor(private global: GlobalService, private ws: wsSocketService, private callService: CallService) { }
 
   ngOnInit() {
     this.global.showProfile$.subscribe(value => this.showProfile = value);

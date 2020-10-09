@@ -25,7 +25,8 @@ var mainConfig = {
     minWidth: 800,
     minHeight: 600,
     frame: false,
-    show: false
+    show: false,
+    icon: './src/assets/icons/favicon.ico'
 };
 var CreateWindow = /** @class */ (function () {
     function CreateWindow(entryURL, mainURL, serve) {
@@ -56,7 +57,6 @@ var CreateWindow = /** @class */ (function () {
             });
             this.EntryWindow.webContents.openDevTools();
         }
-        this.EntryWindow.webContents.openDevTools();
         this.EntryWindow.once('ready-to-show', function () {
             _this.EntryWindow.show();
         });
@@ -68,9 +68,8 @@ var CreateWindow = /** @class */ (function () {
                 allowRunningInsecureContent: (this.serve) ? true : false
             } }));
         child.loadURL(url);
-        if (this.serve) {
+        if (this.serve)
             child.webContents.openDevTools();
-        }
         child.on('close', function () {
             _this.MainWindow = null;
         });

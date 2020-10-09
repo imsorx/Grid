@@ -19,6 +19,7 @@ async function login(mail, pwd) {
                 img: user.img,
                 name: user.name,
                 mail: user.mail,
+                dsg: user.dsg,
                 convers: user.convers,
                 channels: user.channels
             }
@@ -31,7 +32,7 @@ async function login(mail, pwd) {
     }
 }
 
-async function signup(name, mail, pwd) {
+async function signup(name, mail, pwd, dsg) {
     try {
         let user = await User.findOne({ mail: mail }).exec();
         if (user) {
@@ -42,6 +43,7 @@ async function signup(name, mail, pwd) {
                 _id: new mongoose.Types.ObjectId(),
                 name: name,
                 mail: mail,
+                dsg: dsg,
                 pwd: hashedpwd
             });
             let savedUser = await user.save();
@@ -62,7 +64,7 @@ module.exports = {
     },
     signup: async function (req, res) {
         try {
-            let response = await signup(req.body.name, req.body.mail, req.body.pwd);
+            let response = await signup(req.body.name, req.body.mail, req.body.pwd, req.body.dsg);
             return res.status(201).json({ message: response });
         } catch (err) {
             return res.status(409).send(err.message);

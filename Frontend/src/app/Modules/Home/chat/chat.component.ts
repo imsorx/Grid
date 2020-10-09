@@ -2,6 +2,7 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { ChatService } from '../../../services/chat.service';
 import { User } from '../../../models/user';
 import { Message } from '../../../models/message';
+import { CallService } from '../../../services/call.service';
 
 @Component({
     selector: 'chat',
@@ -15,7 +16,7 @@ export class ChatComponent implements AfterViewInit, OnInit {
     user: User;
     messages: Message[] = [];
 
-    constructor(private chatService: ChatService) {
+    constructor(private chatService: ChatService,private callService:CallService) {
     }
 
 
@@ -25,5 +26,8 @@ export class ChatComponent implements AfterViewInit, OnInit {
     }
 
     ngAfterViewInit() {
+    }
+    makeCall() {
+        this.callService.newCall();
     }
 }

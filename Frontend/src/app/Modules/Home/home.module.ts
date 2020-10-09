@@ -7,16 +7,18 @@ import { HomeRoutingModule } from './home-routing.module';
 
 import { HomeComponent } from './home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ProfileComponet } from './profile/profile.component'
 import { ListComponent } from './list/list.component';
 import { UserComponent } from './list/user/user.component';
 import { ChatComponent } from './chat/chat.component';
 import { TopbarComponent } from './chat/topbar/topbar.component';
 import { MessageComponent } from './chat/message/message.component';
 import { SendboxComponent } from './chat/sendbox/sendbox.component';
-import { ProfileComponet } from './profile/profile.component'
+import { CallComponent } from './call/call.component';
 
 import { wsSocketService } from './../../services/ws.service';
 import { ChatService } from '../../services/chat.service';
+import { CallService } from '../../services/call.service';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { ChatService } from '../../services/chat.service';
         TopbarComponent,
         MessageComponent,
         SendboxComponent,
-        ProfileComponet
+        ProfileComponet,
+        CallComponent
     ],
     imports: [
         CommonModule,
@@ -38,7 +41,7 @@ import { ChatService } from '../../services/chat.service';
         ReactiveFormsModule,
         SharedModule
     ],
-    providers: [ChatService, wsSocketService],
+    providers: [ChatService, wsSocketService, CallService],
     exports: [
         FormsModule,
         HomeComponent

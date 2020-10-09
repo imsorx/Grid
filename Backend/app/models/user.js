@@ -9,6 +9,7 @@ const userSchema = mongoose.Schema({
   name: { type: String, required: true },
   mail: { type: String, unique: true, required: true },
   pwd: { type: String, required: true },
+  dsg: { type: String, default: 'Professor' },
   convers: [mongoose.Schema.Types.ObjectId],
   channels: [mongoose.Schema.Types.ObjectId],
   pendings: [String]
