@@ -12,10 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "browserify": "^16.5.1",
     "dotenv": "^8.1.0",
-    "express": "^4.8.7",
+    "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.1.1",
     "multer": "^1.4.2",
